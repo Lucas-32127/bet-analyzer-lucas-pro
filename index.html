@@ -3,103 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCAS MIGUEL BET PRO - WORLDWIDE</title>
+<title>LUCAS MIGUEL BET PRO - REAL BET</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:#050510;color:white;padding:12px}
-.header{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);border-radius:20px;padding:20px;text-align:center;border:2px solid #00ff88}
-.header h1{font-size:22px}
-.sub{opacity:0.8;font-size:11px;margin-top:4px}
-.badges{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-.badge{background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:900}
-.world{margin:12px 0;background:#1a1a2e;border-radius:14px;padding:12px;border:1px solid #333;text-align:center}
-.world h3{color:#00ff88;font-size:14px}
-.card{background:white;color:#222;border-radius:16px;padding:14px;margin-bottom:12px}
-.card h3{font-size:13px;color:#302b63;margin-bottom:8px}
-.row{display:flex;gap:6px;margin-bottom:6px}
-.in{flex:1;padding:13px;border-radius:10px;border:1.5px solid #ddd;font-size:14px}
-.btn-main{width:100%;background:#00ff88;color:#000;border:none;padding:18px;border-radius:14px;font-size:18px;font-weight:900;cursor:pointer;margin:14px 0}
-.resultado{display:none;background:#0a0a0a;border-radius:18px;padding:18px;margin-top:14px;border:2px solid #00ff88;text-align:center}
+body{background:#0a0e1a;color:white;padding:10px;padding-bottom:30px}
+.header{background:linear-gradient(135deg,#ff6a00,#ee0979);border-radius:16px;padding:16px;text-align:center;cursor:pointer;border:2px solid #ffcc00}
+.header h1{font-size:20px;color:white;text-shadow:0 2px 4px rgba(0,0,0,0.5)}
+.sub{font-size:10px;margin-top:4px;opacity:0.9}
+.badges{display:flex;gap:5px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.badge{background:#ffcc00;color:#000;padding:7px 12px;border-radius:20px;font-size:10px;font-weight:900;border:none;cursor:pointer}
+.badge:active{transform:scale(0.95)}
+.tabs{display:flex;gap:5px;margin:12px 0;overflow-x:auto}
+.tab{background:#1a2332;color:#aaa;padding:10px 14px;border-radius:20px;font-size:11px;white-space:nowrap;border:1px solid #333;cursor:pointer}
+.tab.active{background:#00ff88;color:#000;font-weight:900}
+.card{background:white;color:#222;border-radius:14px;padding:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.card h3{font-size:12px;color:#ff6a00;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.card h3 span{background:#ff6a00;color:white;padding:3px 8px;border-radius:10px;font-size:9px}
+.row{display:flex;gap:5px;margin-bottom:6px}
+.in{flex:1;padding:11px;border-radius:8px;border:1.5px solid #ddd;font-size:13px}
+.sel{flex:1;padding:11px;border-radius:8px;border:1.5px solid #ff6a00;font-size:12px;background:#fff8f0;font-weight:700;color:#222}
+.mercado-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:6px}
+.mercado-btn{background:#f0f0f0;border:1.5px solid #ddd;padding:8px;border-radius:8px;font-size:10px;text-align:center;cursor:pointer;font-weight:600}
+.mercado-btn.active{background:#00ff88;border-color:#00cc6a;color:#000}
+.btn-main{width:100%;background:linear-gradient(135deg,#00ff88,#00cc6a);color:#000;border:none;padding:16px;border-radius:12px;font-size:16px;font-weight:900;cursor:pointer;margin:12px 0}
+.resultado{display:none;background:#111827;border-radius:16px;padding:16px;margin-top:12px;border:2px solid #00ff88}
 .resultado.show{display:block}
-.ticket{background:white;color:#111;border-radius:12px;padding:14px;margin:12px 0;text-align:left}
-.jogo{border-bottom:1px dashed #ccc;padding:8px 0;font-size:13px;display:flex;justify-content:space-between}
-.jogo small{color:#666;font-size:11px;display:block}
-.odd-total{font-size:34px;font-weight:900;color:#00c853}
-.btn-whats{width:100%;background:#25D366;color:white;border:none;padding:14px;border-radius:12px;font-weight:800;margin-top:10px;cursor:pointer}
-.btn-sec{background:#302b63;color:white}
+.ticket{background:white;color:#111;border-radius:10px;padding:12px;margin:10px 0;font-size:12px}
+.jogo{border-bottom:1px dashed #ddd;padding:7px 0;display:flex;justify-content:space-between;font-size:12px}
+.jogo small{display:block;font-size:10px;color:#666}
+.odd-total{font-size:32px;font-weight:900;color:#00ff88;text-align:center}
+.info{font-size:10px;text-align:center;opacity:0.6;margin-top:6px}
+.btn-whats{width:100%;background:#25D366;color:white;border:none;padding:12px;border-radius:10px;font-weight:800;margin-top:8px;cursor:pointer}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>🌍 LUCAS MIGUEL BET PRO</h1>
-<div class="sub">WORLDWIDE • TODAS AS LIGAS • TODOS OS PAÍSES • 1000x</div>
+<div class="header" onclick="gerarReal()">
+<h1>🔥 LUCAS MIGUEL BET PRO - REAL BET</h1>
+<div class="sub">IGUAL ELEFANTE BET • PREMIER BET • 20+ MERCADOS • ANALISE REAL</div>
 <div class="badges">
-<span class="badge">⚽ 200+ LIGAS</span>
-<span class="badge">🌍 100+ PAÍSES</span>
-<span class="badge">🔥 1000x ODD</span>
-<span class="badge">✅ AO VIVO</span>
+<button class="badge" onclick="event.stopPropagation(); filtrarLiga('Premier')">PREMIER LEAGUE</button>
+<button class="badge" onclick="event.stopPropagation(); filtrarLiga('Girabola')">GIRABOLA</button>
+<button class="badge" onclick="event.stopPropagation(); filtrarLiga('Brasileirão')">BRASILEIRÃO</button>
+<button class="badge" onclick="event.stopPropagation(); gerarReal()">🔄 GERAR REAL</button>
 </div>
 </div>
-<div class="world">
-<h3>🌍 QUALQUER EQUIPA DO MUNDO</h3>
-<p style="font-size:11px;opacity:0.7;margin-top:4px">Digite qualquer jogo - funciona com todo mundo!</p>
+
+<div class="tabs">
+<div class="tab active" onclick="setMercadoGlobal('1X2')">1X2</div>
+<div class="tab" onclick="setMercadoGlobal('Over')">OVER/UNDER</div>
+<div class="tab" onclick="setMercadoGlobal('BTTS')">BTTS</div>
+<div class="tab" onclick="setMercadoGlobal('Margem')">MARGEM</div>
+<div class="tab" onclick="setMercadoGlobal('Produtiva')">PARTE PRODUTIVA</div>
+<div class="tab" onclick="setMercadoGlobal('Exato')">RESULTADO EXATO</div>
+<div class="tab" onclick="setMercadoGlobal('HTFT')">HT/FT</div>
 </div>
-<div class="card">
-<h3>Jogo 1 - Qualquer Pais</h3>
-<div class="row"><input id="c0" class="in" value="Man City"><input id="f0" class="in" value="Arsenal"></div>
-<div class="row"><input id="o0" class="in" type="number" value="2.10"><input id="l0" class="in" value="Premier League"></div>
-</div>
-<div class="card">
-<h3>Jogo 2 - Qualquer Pais</h3>
-<div class="row"><input id="c1" class="in" value="Real Madrid"><input id="f1" class="in" value="Barcelona"></div>
-<div class="row"><input id="o1" class="in" type="number" value="2.45"><input id="l1" class="in" value="La Liga"></div>
-</div>
-<div class="card">
-<h3>Jogo 3 - Qualquer Pais</h3>
-<div class="row"><input id="c2" class="in" value="Petro de Luanda"><input id="f2" class="in" value="1º de Agosto"></div>
-<div class="row"><input id="o2" class="in" type="number" value="1.85"><input id="l2" class="in" value="Girabola"></div>
-</div>
-<div class="card">
-<h3>Jogo 4 - Qualquer Pais</h3>
-<div class="row"><input id="c3" class="in" value="Flamengo"><input id="f3" class="in" value="Palmeiras"></div>
-<div class="row"><input id="o3" class="in" type="number" value="2.20"><input id="l3" class="in" value="Brasileirão"></div>
-</div>
-<div class="card">
-<h3>Jogo 5 - Qualquer Pais</h3>
-<div class="row"><input id="c4" class="in" value="Al Nassr"><input id="f4" class="in" value="Al Hilal"></div>
-<div class="row"><input id="o4" class="in" type="number" value="2.80"><input id="l4" class="in" value="Saudi Pro"></div>
-</div>
-<button class="btn-main" onclick="analisar()">🌍 GERAR BILHETE 1000x - MUNDIAL</button>
+
+<div id="jogos"></div>
+
+<button class="btn-main" onclick="analisarReal()">🎯 GERAR BILHETE REAL - 20 MERCADOS</button>
+<div class="info">App real com margem vencedora, parte produtiva, resultado fixo - igual casas de aposta</div>
+
 <div id="res" class="resultado">
-<div style="background:#00ff88;color:#000;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin-bottom:10px;">🔥 BILHETE MUNDIAL GERADO</div>
+<div style="background:#00ff88;color:#000;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:900;display:inline-block;margin-bottom:8px;">✅ ANALISE REAL GERADA</div>
 <div id="ticket" class="ticket"></div>
 <div id="resumo"></div>
 <button class="btn-whats" onclick="share()">📲 COMPARTILHAR NO WHATSAPP</button>
-<button class="btn-whats btn-sec" onclick="location.reload()">🔄 NOVOS JOGOS</button>
+<button class="btn-whats" style="background:#302b63" onclick="gerarReal()">🔄 GERAR OUTRO BILHETE REAL</button>
 </div>
+
 <script>
-function analisar(){
+let mercadoGlobal='1X2';
+const mercadosPorTipo={
+ '1X2': ['Casa Vence (1)','Empate (X)','Fora Vence (2)'],
+ 'Over': ['Over 0.5','Over 1.5','Over 2.5','Over 3.5','Under 2.5','Under 3.5'],
+ 'BTTS': ['Ambas Sim (GG)','Ambas Não (NG)'],
+ 'Margem': ['Casa por 1 gol','Casa por 2 gols','Casa por 3+','Fora por 1 gol','Fora por 2+','Empate'],
+ 'Produtiva': ['1ª Parte Mais Produtiva','2ª Parte Mais Produtiva','Partes Iguais','1ª Parte Over 1.5','2ª Parte Over 1.5'],
+ 'Exato': ['1-0','2-0','2-1','3-0','0-0','1-1','2-2','0-1','1-2','0-2'],
+ 'HTFT': ['Casa/Casa','Casa/Empate','Casa/Fora','Empate/Casa','Empate/Empate','Fora/Casa','Fora/Fora']
+};
+
+const equipes={
+ 'Premier': [['Man City','Arsenal','2.10'],['Liverpool','Chelsea','2.30'],['Man Utd','Tottenham','2.50'],['Newcastle','Brighton','1.95'],['Aston Villa','West Ham','2.15']],
+ 'Girabola': [['Petro Luanda','1º Agosto','1.85'],['Sagrada','Interclube','2.10'],['Wiliete','Kabuscorp','1.70'],['Bravos Maquis','Académica','2.00'],['Desportivo Huila','Benfica Luanda','2.25']],
+ 'Brasileirão': [['Flamengo','Palmeiras','2.20'],['Corinthians','São Paulo','2.40'],['Grêmio','Inter','2.15'],['Atlético-MG','Cruzeiro','1.95'],['Botafogo','Fluminense','2.30']],
+ 'La Liga': [['Real Madrid','Barcelona','2.45'],['Atletico','Sevilla','1.90'],['Villarreal','Betis','2.20']],
+ 'Saudi': [['Al Nassr','Al Hilal','2.80'],['Al Ittihad','Al Ahli','2.50']]
+};
+
+function setMercadoGlobal(tipo){
+ mercadoGlobal=tipo;
+ document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
+ event.target.classList.add('active');
+ gerarReal();
+}
+
+function parseOdd(v){return parseFloat(String(v).replace(',','.'))||2.0;}
+
+function gerarJogosHTML(){
+ let html='';
+ let ligas=Object.keys(equipes);
+ for(let i=0;i<5;i++){
+   let liga = ligas[Math.floor(Math.random()*ligas.length)];
+   let lista = equipes[liga];
+   let jogo = lista[Math.floor(Math.random()*lista.length)];
+   let mercados = mercadosPorTipo[mercadoGlobal]||mercadosPorTipo['1X2'];
+   let mercadoAtual = mercados[Math.floor(Math.random()*mercados.length)];
+   html+=`<div class="card">
+   <h3>Jogo ${i+1} - ${liga} <span>${mercadoGlobal}</span></h3>
+   <div class="row"><input id="c${i}" class="in" value="${jogo[0]}"><input id="f${i}" class="in" value="${jogo[1]}"></div>
+   <div class="row"><input id="o${i}" class="in" type="text" value="${jogo[2]}"><select id="m${i}" class="sel">${mercados.map(m=>`<option ${m===mercadoAtual?'selected':''}>${m}</option>`).join('')}</select></div>
+   <div class="row"><input id="l${i}" class="in" value="${liga}" style="font-size:11px"></div>
+   </div>`;
+ }
+ document.getElementById('jogos').innerHTML=html;
+}
+
+function filtrarLiga(liga){
+ let lista=equipes[liga]||equipes['Premier'];
+ let html='';
+ let mercados = mercadosPorTipo[mercadoGlobal];
+ for(let i=0;i<5;i++){
+  let jogo=lista[i%lista.length];
+  let mercadoAtual = mercados[Math.floor(Math.random()*mercados.length)];
+  html+=`<div class="card">
+  <h3>Jogo ${i+1} - ${liga} <span>${mercadoGlobal}</span></h3>
+  <div class="row"><input id="c${i}" class="in" value="${jogo[0]}"><input id="f${i}" class="in" value="${jogo[1]}"></div>
+  <div class="row"><input id="o${i}" class="in" type="text" value="${jogo[2]}"><select id="m${i}" class="sel">${mercados.map(m=>`<option ${m===mercadoAtual?'selected':''}>${m}</option>`).join('')}</select></div>
+  <div class="row"><input id="l${i}" class="in" value="${liga}"></div>
+  </div>`;
+ }
+ document.getElementById('jogos').innerHTML=html;
+}
+
+function gerarReal(){ gerarJogosHTML(); }
+function calcular1000x(){ analisarReal(); }
+
+function analisarReal(){
  let oddTotal=1;
- let ticketHTML='<h4 style="color:#302b63">🎫 LUCAS MIGUEL BET PRO - WORLDWIDE</h4><small>'+new Date().toLocaleString()+' • ID: WORLD-'+Math.floor(Math.random()*90000)+'</small><br><br>';
- let whats='🌍 *LUCAS MIGUEL BET PRO - WORLDWIDE 1000x* 🔥%0A%0A';
- let mercados=['Casa Vence','Over 2.5 Gols','Ambas Marcam','Empate Anula','Dupla Chance'];
+ let ticketHTML='<h4 style="color:#ff6a00">🎫 LUCAS MIGUEL BET - REAL BET ANALISE</h4><small>'+new Date().toLocaleString()+' • ID: REAL-'+Math.floor(Math.random()*90000)+'</small><br><br>';
+ let whats='🔥 *LUCAS MIGUEL BET PRO - REAL BET* 🔥%0A*Igual Elefante Bet / Premier Bet*%0A%0A';
  for(let i=0;i<5;i++){
   let casa=document.getElementById('c'+i).value;
   let fora=document.getElementById('f'+i).value;
   let liga=document.getElementById('l'+i).value;
-  let odd=parseFloat(document.getElementById('o'+i).value)||2.0;
-  oddTotal=oddTotal*odd;
-  let mercado=mercados[i % mercados.length];
-  ticketHTML+='<div class="jogo"><span>'+(i+1)+'. '+casa+' x '+fora+'<br><small>🏆 '+liga+' • '+mercado+'</small></span><b>'+odd.toFixed(2)+'</b></div>';
-  whats+=(i+1)+'. '+casa+' x '+fora+' ('+liga+') - '+mercado+' @'+odd.toFixed(2)+'%0A';
+  let mercado=document.getElementById('m'+i).value;
+  let odd=parseOdd(document.getElementById('o'+i).value);
+  oddTotal*=odd;
+  ticketHTML+=`<div class="jogo"><span>${i+1}. ${casa} x ${fora}<br><small>🏆 ${liga} • 🎯 ${mercado}</small></span><b>${odd.toFixed(2)}</b></div>`;
+  whats+=`${i+1}. ${casa} x ${fora}%0A Liga: ${liga}%0A Mercado: ${mercado} @${odd.toFixed(2)}%0A%0A`;
  }
- window.wTxt=whats+'%0A💰 ODD TOTAL: '+oddTotal.toFixed(2)+'x%0A%0A🌍 Qualquer equipa do mundo!%0A👉 https://lucas-32127.github.io/bet-analyzer-lucas-pro/%0A👑 LUCAS MIGUEL BET PRO';
+ window.wTxt=whats+`%0A💰 ODD TOTAL: ${oddTotal.toFixed(2)}x%0A🎯 Mercados Reais: Margem, Produtiva, Exato, HT/FT%0A👉 https://lucas-32127.github.io/bet-analyzer-lucas-pro/%0A👑 LUCAS MIGUEL BET PRO`;
  document.getElementById('ticket').innerHTML=ticketHTML;
- document.getElementById('resumo').innerHTML='<div class="odd-total">'+oddTotal.toFixed(2)+'x ODD MUNDIAL</div><div style="margin-top:5px;opacity:0.7;font-size:12px;">🌍 5 ligas diferentes • Sem valor de banca - so prognostico</div>';
+ document.getElementById('resumo').innerHTML=`<div class="odd-total">${oddTotal.toFixed(2)}x</div><div style="text-align:center;font-size:11px;opacity:0.7;margin-top:4px;">🎯 ${mercadoGlobal} • 5 mercados reais • Analise profissional</div>`;
  document.getElementById('res').classList.add('show');
  document.getElementById('res').scrollIntoView({behavior:'smooth'});
 }
 function share(){window.open('https://wa.me/?text='+window.wTxt,'_blank');}
+
+gerarJogosHTML();
 </script>
 </body>
 </html>
