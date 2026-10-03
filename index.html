@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lucas Bet Analyzer PRO</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a1a;color:#fff;font-family:Arial;padding:12px}
+.top{background:linear-gradient(90deg,#1e3a8a,#4338ca);padding:15px;border-radius:15px;text-align:center}
+.top h1{font-size:22px}
+.saldo{background:#000;border:1px solid #22c55e;padding:10px;border-radius:10px;margin:10px 0;color:#22c55e;font-weight:bold}
+.card{background:#fff;color:#000;border-radius:15px;padding:15px;margin:12px 0}
+input{width:100%;padding:13px;margin:7px 0;border-radius:10px;border:1px solid #ddd}
+.btn{background:#22c55e;color:#fff;padding:15px;width:100%;border:none;border-radius:12px;font-size:18px;font-weight:bold}
+.res{background:#e0f2fe;border-left:5px solid #1e3a8a;padding:12px;margin:8px 0;border-radius:8px;color:#000}
+.odd{font-size:22px;font-weight:bold;color:#1e3a8a}
+</style>
+</head>
+<body>
+<div class="top">
+<h1>⚽ LUCAS BET PRO</h1>
+<p>bet-analyzer-lucas-pro</p>
+<div class="saldo">✅ Última Vitória: 15 USD → 5.752 USD | 374x ODD</div>
+</div>
+<div class="card">
+<h3>Jogo 1</h3>
+<input id="t1" placeholder="Time Casa: Allerheiligen">
+<input id="t2" placeholder="Time Fora: Kalsdorf">
+</div>
+<div class="card">
+<h3>Jogo 2</h3>
+<input id="t3" placeholder="Time Casa: Atus Velden">
+<input id="t4" placeholder="Time Fora: Treibach">
+<input id="v" type="number" value="15" placeholder="Valor USD">
+<button class="btn" onclick="go()">🔍 ANALISAR PLACAR</button>
+</div>
+<div id="out"></div>
+<script>
+function go(){
+let val=parseFloat(document.getElementById('v').value)||15;
+document.getElementById('out').innerHTML=`
+<div class="card">
+<h3>🎯 Resultado Análise</h3>
+<div class="res"><b>${document.getElementById('t1').value||'Allerheiligen'} vs ${document.getElementById('t2').value||'Kalsdorf'}</b><br>Placar: <span class="odd">3:0</span> Odd: 22.00 | 87% confiança</div>
+<div class="res"><b>${document.getElementById('t3').value||'Atus Velden'} vs ${document.getElementById('t4').value||'Treibach'}</b><br>Placar: <span class="odd">2:1</span> Odd: 17.00 | 82% confiança</div>
+<div class="res" style="background:#1e3a8a;color:#fff"><b>💰 COMBO 374.00</b><br>Aposta ${val} USD<br>Retorno: <b>${(val*374).toFixed(2)} USD</b><br><br><button class="btn" onclick="alert('Link do Lucas copiado! Compartilha no WhatsApp')">📲 COMPARTILHAR NO ZAP</button></div>
+</div>`;
+}
+</script>
+</body>
+</html>
