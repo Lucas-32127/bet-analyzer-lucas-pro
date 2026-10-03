@@ -1,175 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OneXpress Bet ZON - Angola</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:#000;color:white;min-height:100vh;padding-bottom:80px}
-.top{background:#0a0a0a;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #ff6a00;position:sticky;top:0;z-index:20}
-.logo{font-weight:900;font-size:20px;line-height:1}
-.logo b{color:#ff6a00}
-.logo span{color:#00d4ff;display:block;font-size:11px;letter-spacing:2px;margin-top:1px;font-weight:800}
-.user-area{display:flex;gap:6px;align-items:center}
-.btn-login{background:#ff6a00;color:white;border:none;padding:7px 12px;border-radius:6px;font-weight:900;font-size:10px;cursor:pointer}
-.btn-reg{background:#222;color:white;border:1px solid #333;padding:7px 12px;border-radius:6px;font-weight:700;font-size:10px;cursor:pointer}
-.balance{background:#1a1a1a;border:1px solid #ff6a00;padding:5px 10px;border-radius:6px;font-size:11px;display:none;cursor:pointer}
-.balance.show{display:block}
-.balance b{color:#00ff88}
-.menu-financeiro{display:flex;gap:8px;padding:10px;background:#0a0a0a;border-bottom:1px solid #1a1a1a}
-.btn-fin{flex:1;padding:10px;border-radius:8px;border:none;font-weight:900;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
-.btn-dep{background:#00c851;color:white}
-.btn-saq{background:#ff6a00;color:white}
-.btn-hist{background:#1e1e1e;color:#aaa;border:1px solid #333}
-.tabs-head{background:#000;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #1a1a1a}
-.tabs{display:flex;gap:0;overflow-x:auto;background:#000;border-bottom:2px solid #1a1a1a}
-.tab{padding:12px 14px;font-size:10px;font-weight:800;white-space:nowrap;cursor:pointer;color:#666;border-bottom:2px solid transparent;margin-bottom:-2px}
-.tab.active{color:#ff6a00;border-bottom:2px solid #ff6a00}
-.games{padding:8px}
-.league{font-size:11px;color:#ff6a00;padding:10px 4px 6px;font-weight:800}
-.match-card{background:#111;border:1px solid #222;border-radius:10px;padding:10px;margin-bottom:8px}
-.match-top{display:flex;justify-content:space-between;font-size:10px;color:#666;margin-bottom:8px}
-.teams{font-size:13px;font-weight:700;color:white}
-.odds{display:flex;gap:6px;margin-top:8px}
-.odd{flex:1;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:9px;text-align:center;cursor:pointer}
-.odd.active{background:#ff6a00;color:white;border-color:#ff6a00}
-.odd small{display:block;font-size:9px;color:#888}
-.odd b{font-size:13px}
-.bet-slip{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:2px solid #ff6a00;padding:12px;transform:translateY(100%);transition:0.3s;z-index:30;border-radius:12px 12px 0 0}
-.bet-slip.show{transform:translateY(0)}
-.bet-slip-top{display:flex;justify-content:space-between;margin-bottom:8px;font-size:12px;font-weight:800}
-.bet-item{background:#1a1a1a;padding:6px 8px;border-radius:6px;font-size:11px;margin-bottom:4px;display:flex;justify-content:space-between}
-.input-stake{width:100%;background:#000;border:1px solid #333;color:white;padding:11px;border-radius:8px;margin:8px 0}
-.btn-apostar{width:100%;background:#ff6a00;color:white;border:none;padding:13px;border-radius:8px;font-weight:900;cursor:pointer}
-.chat-btn{position:fixed;bottom:85px;right:14px;width:50px;height:50px;background:#ff6a00;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:50;align-items:flex-start;justify-content:center;padding:12px;overflow-y:auto}
-.modal.show{display:flex}
-.modal-box{background:#111;border:1px solid #333;border-radius:12px;padding:16px;width:100%;max-width:380px;margin-top:20px}
-.modal-box h3{color:#ff6a00;margin-bottom:12px;text-align:center;font-size:14px}
-.modal-box input,.modal-box select{width:100%;background:#000;border:1px solid #333;color:white;padding:11px;border-radius:6px;margin-bottom:10px}
-.modal-box button{width:100%;padding:12px;border-radius:8px;border:none;font-weight:900;cursor:pointer;margin-top:6px}
-.btn-primary{background:#ff6a00;color:white}
-.btn-success{background:#00c851;color:white}
-.btn-secondary{background:#222;color:white}
-.pay-option{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:8px;cursor:pointer}
-.pay-option.active{border-color:#ff6a00;background:#1f160f}
-.bet-history-item{background:#111;border:1px solid #222;border-radius:10px;padding:12px;margin:8px 12px}
-.status{font-size:9px;padding:3px 8px;border-radius:4px;display:inline-block;font-weight:800}
-.status.aberta{background:#ffcc00;color:#000}
-.trans-item{background:#111;border:1px solid #222;border-radius:8px;padding:10px;margin:8px 12px;display:flex;justify-content:space-between;font-size:12px}
-.empty{text-align:center;margin-top:80px;color:#555;font-size:14px}
-</style>
-</head>
-<body>
-<div class="top">
-<div class="logo"><b>One</b>Xpress <b>Bet</b> <span>ZON 🇦🇴</span></div>
-<div class="user-area">
-<div id="balance" class="balance" onclick="openModal('carteira')"><small>SALDO</small> <b id="saldoTxt">0,00 Kz</b></div>
-<button id="btnLoginTop" class="btn-login" onclick="openModal('login')">ENTRAR</button>
-<button id="btnRegTop" class="btn-reg" onclick="openModal('reg')">REGISTAR</button>
-<div id="userLogged" style="display:none;align-items:center;gap:6px"><span id="userName" style="font-size:11px;font-weight:800"></span><button class="btn-reg" onclick="logout()" style="padding:4px 8px">SAIR</button></div>
-</div>
-</div>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OneXpress Bet ZON</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}body{background:#000;color:#fff;padding-bottom:80px}.top{background:#0a0a0a;padding:12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #ff6a00;position:sticky;top:0}.logo{font-weight:900;color:#ff6a00}.logo span{color:#00d4ff;font-size:10px;display:block}.btn{background:#ff6a00;color:#fff;border:0;padding:8px 12px;border-radius:6px;font-weight:900;font-size:11px}.bal{display:none;background:#111;border:1px solid #ff6a00;padding:6px 10px;border-radius:6px}.bal.show{display:block}.menu{display:flex;gap:8px;padding:10px;background:#0a0a0a}.menu button{flex:1;padding:10px;border-radius:8px;border:0;font-weight:900;font-size:11px}.dep{background:#00c851;color:#fff}.saq{background:#ff6a00;color:#fff}.card{background:#111;border:1px solid #222;border-radius:10px;padding:10px;margin:8px}.odd{display:flex;gap:6px;margin-top:8px}.odd div{flex:1;background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:8px;text-align:center}.odd div.on{background:#ff6a00}.bet{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:2px solid #ff6a00;padding:12px;transform:translateY(100%);transition:.3s}.bet.show{transform:translateY(0)}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);align-items:center;justify-content:center;padding:20px;z-index:99}.modal.show{display:flex}.box{background:#111;border:1px solid #333;border-radius:12px;padding:16px;width:100%;max-width:340px}.box input{width:100%;padding:10px;margin:6px 0;background:#000;border:1px solid #333;color:#fff;border-radius:6px}.box button{width:100%;padding:12px;margin-top:6px;border-radius:6px;border:0;font-weight:900}</style></head><body>
+<div class="top"><div class="logo">OneXpress Bet <span>ZON 🇦🇴</span></div><div style="display:flex;gap:6px"><div id="bal" class="bal"><b id="saldo">0 Kz</b></div><button class="btn" id="bLogin" onclick="openM('login')">ENTRAR</button><button class="btn" style="background:#222" id="bReg" onclick="openM('reg')">REGISTAR</button></div></div>
+<div class="menu" id="menu" style="display:none"><button class="dep" onclick="openM('dep')">💳 DEPOSITAR MCX</button><button class="saq" onclick="openM('saq')">💸 LEVANTAR</button></div>
+<div style="padding:10px"><div style="background:#1a1a1a;padding:10px;border-radius:8px;display:flex;justify-content:space-between"><span>HISTÓRICO</span><span style="color:#00ff88">● AO VIVO</span></div><div id="lista"></div></div>
+<div class="bet" id="bet"><div id="itens"></div><input id="valor" type="number" value="500" style="width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:6px;margin:8px 0"><div>Odd: <b id="oddT">1.00x</b> | Retorno: <b id="ret" style="color:#00ff88">0 Kz</b></div><button class="btn" style="width:100%;margin-top:8px" onclick="apostar()">FAZER APOSTA ZON</button></div>
 
-<div class="menu-financeiro" id="menuFin" style="display:none">
-<button class="btn-fin btn-dep" onclick="openModal('deposito')">💳 DEPOSITAR</button>
-<button class="btn-fin btn-saq" onclick="openModal('levantamento')">💸 LEVANTAR</button>
-<button class="btn-fin btn-hist" onclick="showSection('carteira')">📊 CARTEIRA</button>
-</div>
-
-<div class="tabs-head">
-<div style="width:28px;height:28px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="showSection('jogos')">‹</div>
-<h2 id="tituloSec" style="font-size:13px">HISTÓRICO DE APOSTAS</h2>
-<div style="margin-left:auto;font-size:10px;color:#00ff88">● AO VIVO</div>
-</div>
-
-<div class="tabs" id="tabsHistorico">
-<div class="tab active" onclick="filtrarHist('tudo',this)">TUDO</div>
-<div class="tab" onclick="filtrarHist('aberta',this)">ABERTAS</div>
-<div class="tab" onclick="filtrarHist('ganhou',this)">GANHAS</div>
-<div class="tab" onclick="filtrarHist('perdido',this)">PERDIDAS</div>
-<div class="tab" onclick="showSection('carteira')">💰 TRANSACÇÕES</div>
-</div>
-
-<div id="secHistorico">
-<div style="background:#1a1a1a;margin:10px;border-radius:8px;padding:10px;display:flex;justify-content:space-between;font-size:11px"><span>Filtro: 24 horas</span><span style="color:#888">▼</span></div>
-<div id="historicoLista"><div class="empty">Sem apostas para mostrar<br><small>Faça login e aposte</small></div></div>
-</div>
-
-<div id="secJogos" style="display:none"><div class="games" id="listaJogos"></div></div>
-
-<div id="secCarteira" style="display:none">
-<div style="background:linear-gradient(135deg,#ff6a00,#ff8c00);margin:12px;border-radius:12px;padding:16px;color:white">
-<div style="font-size:11px;opacity:0.9">SALDO DISPONÍVEL</div>
-<div style="font-size:28px;font-weight:900;margin:4px 0" id="saldoCarteira">0,00 Kz</div>
-<div style="display:flex;gap:8px;margin-top:12px">
-<button class="btn-fin btn-dep" style="background:white;color:#ff6a00" onclick="openModal('deposito')">DEPOSITAR</button>
-<button class="btn-fin btn-saq" style="background:rgba(0,0,0,0.2);color:white;border:1px solid white" onclick="openModal('levantamento')">LEVANTAR</button>
-</div>
-</div>
-<div style="padding:0 12px"><h4 style="font-size:12px;color:#888;margin:10px 0">ÚLTIMAS TRANSACÇÕES</h4></div>
-<div id="listaTrans"></div>
-</div>
-
-<div style="display:flex;gap:8px;padding:8px 12px">
-<button class="btn-login" style="flex:1;background:#ff6a00" onclick="showSection('jogos')">⚽ APOSTAR AGORA</button>
-<button class="btn-reg" style="flex:1" onclick="showSection('historico')">📜 HISTÓRICO</button>
-</div>
-
-<div class="bet-slip" id="betSlip">
-<div class="bet-slip-top"><span>Boletim (<span id="betCount">0</span>) • OneXpress Bet ZON</span><span onclick="limparBoletim()" style="color:#ff4444;cursor:pointer">X Limpar</span></div>
-<div id="betItens"></div>
-<input id="valorAposta" class="input-stake" type="number" placeholder="Valor (Kz) Mín 100 Kz" value="500" oninput="calcularRetorno()">
-<div style="display:flex;justify-content:space-between;font-size:11px;margin:4px 0"><span>Odd total:</span><b id="oddTotal">1.00x</b></div>
-<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px"><span>Retorno:</span><b id="retorno" style="color:#00ff88">0,00 Kz</b></div>
-<button class="btn-apostar" onclick="fazerAposta()">FAZER APOSTA • OneXpress Bet ZON</button>
-</div>
-
-<div class="chat-btn">💬</div>
-
-<div id="modalLogin" class="modal"><div class="modal-box"><h3>🔐 ENTRAR - OneXpress Bet ZON</h3><input id="loginTel" placeholder="Telefone (923...)" type="tel"><input id="loginPass" placeholder="Palavra-passe" type="password"><button class="btn-primary" onclick="fazerLogin()">ENTRAR</button><button class="btn-secondary" onclick="closeModal()">CANCELAR</button><p style="font-size:11px;text-align:center;margin-top:10px;color:#888">Sem conta? <span style="color:#ff6a00;cursor:pointer" onclick="openModal('reg')">Criar conta + 1000 Kz BÓNUS</span></p></div></div>
-
-<div id="modalReg" class="modal"><div class="modal-box"><h3>🚀 REGISTAR - OneXpress Bet ZON</h3><input id="regNome" placeholder="Nome completo"><input id="regTel" placeholder="Telefone 9xx" type="tel"><input id="regPass" placeholder="Criar palavra-passe" type="password"><div style="background:#1a2a0f;border:1px solid #00c851;border-radius:6px;padding:8px;margin:6px 0;font-size:11px;color:#00ff88">🎁 BÓNUS: 1000 Kz no primeiro depósito + 100% até 50.000 Kz!</div><button class="btn-primary" onclick="fazerRegisto()">CRIAR CONTA</button><button class="btn-secondary" onclick="closeModal()">CANCELAR</button></div></div>
-
-<div id="modalDeposito" class="modal"><div class="modal-box"><h3>💳 DEPOSITAR - OneXpress Bet ZON</h3>
-<div class="pay-option active" onclick="selectPay(this,'MCX Express')"><div style="width:36px;height:36px;background:#ff6a00;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900">MCX</div><div><b>Multicaixa Express</b><small>Depósito instantâneo • 0% taxa • Mín 500 Kz</small></div></div>
-<div class="pay-option" onclick="selectPay(this,'Express')"><div style="width:36px;height:36px;background:#00d4ff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900">EXP</div><div><b>Express</b><small>BAI, BFA, BIC • 5 min</small></div></div>
-<div class="pay-option" onclick="selectPay(this,'Referencia')"><div style="width:36px;height:36px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900">REF</div><div><b>Referência Multicaixa</b><small>Entidade 12345 • 24h válido</small></div></div>
-<input id="depValor" type="number" placeholder="Valor a depositar (Mín 500 Kz)" value="2000">
-<input id="depTel" type="tel" placeholder="Telefone MCX Express (923...)">
-<button class="btn-success" onclick="fazerDeposito()">💳 DEPOSITAR AGORA</button><button class="btn-secondary" onclick="closeModal()">CANCELAR</button>
-<div style="font-size:10px;color:#666;margin-top:8px;text-align:center">Pagamento seguro via EMIS • OneXpress Bet ZON</div>
-</div></div>
-
-<div id="modalLevantamento" class="modal"><div class="modal-box"><h3>💸 LEVANTAR - OneXpress Bet ZON</h3><div style="background:#111;border:1px solid #222;border-radius:6px;padding:8px;margin-bottom:10px;font-size:11px">Saldo: <b id="saldoLev" style="color:#00ff88">0 Kz</b> • Mín 1000 Kz</div>
-<select id="levMetodo"><option>Multicaixa Express (Recomendado)</option><option>Transferência BAI</option><option>Transferência BFA</option><option>Express</option></select>
-<input id="levValor" type="number" placeholder="Valor a levantar">
-<input id="levIBAN" placeholder="IBAN ou Telefone MCX">
-<input id="levNome" placeholder="Nome do titular">
-<button class="btn-primary" onclick="fazerLevantamento()">💸 PEDIR LEVANTAMENTO</button><button class="btn-secondary" onclick="closeModal()">CANCELAR</button>
-</div></div>
-
-<div id="modalCarteira" class="modal"><div class="modal-box"><h3>👛 CARTEIRA - OneXpress Bet ZON</h3><div id="carteiraInfo"></div><button class="btn-primary" onclick="closeModal();openModal('deposito')">DEPOSITAR</button><button class="btn-secondary" onclick="closeModal()">FECHAR</button></div></div>
+<div id="mLogin" class="modal"><div class="box"><h3 style="color:#ff6a00;text-align:center">ENTRAR ZON</h3><input id="lTel" placeholder="Telefone"><input id="lPass" type="password" placeholder="Senha"><button style="background:#ff6a00;color:#fff" onclick="login()">ENTRAR</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
+<div id="mReg" class="modal"><div class="box"><h3 style="color:#ff6a00;text-align:center">REGISTAR ZON +1000 KZ BONUS</h3><input id="rNome" placeholder="Nome"><input id="rTel" placeholder="Telefone"><input id="rPass" type="password" placeholder="Senha"><button style="background:#ff6a00;color:#fff" onclick="reg()">CRIAR CONTA</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
+<div id="mDep" class="modal"><div class="box"><h3 style="color:#00c851;text-align:center">DEPOSITAR MCX EXPRESS</h3><p style="font-size:11px;color:#888;margin-bottom:8px">Multicaixa Express • Express • Referencia</p><input id="dVal" type="number" value="2000" placeholder="Valor min 500 Kz"><input id="dTel" placeholder="Telefone MCX 923..."><button style="background:#00c851;color:#fff" onclick="dep()">DEPOSITAR AGORA</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
+<div id="mSaq" class="modal"><div class="box"><h3 style="color:#ff6a00;text-align:center">LEVANTAR MCX EXPRESS</h3><div>Saldo: <b id="sSaq">0 Kz</b></div><input id="sVal" type="number" placeholder="Valor min 1000 Kz"><input id="sIban" placeholder="Telefone ou IBAN"><button style="background:#ff6a00;color:#fff" onclick="saq()">PEDIR LEVANTAMENTO</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
 
 <script>
-let user=JSON.parse(localStorage.getItem('onexpress_user')||'null');
-let apostas=JSON.parse(localStorage.getItem('onexpress_apostas')||'[]');
-let trans=JSON.parse(localStorage.getItem('onexpress_trans')||'[]');
-let boletim=[];let filtroAtual='tudo';let metodoPag='MCX Express';
-const equipes={'Girabola':[['Petro de Luanda','1º de Agosto'],['Sagrada Esperança','Interclube'],['Wiliete','Kabuscorp']],'Premier League':[['Man City','Arsenal'],['Liverpool','Chelsea']],'La Liga':[['Real Madrid','Barcelona']]};
-function init(){if(user){document.getElementById('btnLoginTop').style.display='none';document.getElementById('btnRegTop').style.display='none';document.getElementById('userLogged').style.display='flex';document.getElementById('userName').innerText=user.nome.split(' ')[0];document.getElementById('balance').classList.add('show');document.getElementById('menuFin').style.display='flex';atualizarSaldos();}gerarJogos();renderHistorico();renderTrans();}
-function atualizarSaldos(){let s=(user?.saldo||0).toLocaleString('pt-AO')+' Kz';document.getElementById('saldoTxt').innerText=s;if(document.getElementById('saldoCarteira'))document.getElementById('saldoCarteira').innerText=s;if(document.getElementById('saldoLev'))document.getElementById('saldoLev').innerText=s;}
-function openModal(t){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'));if(t==='login')document.getElementById('modalLogin').classList.add('show');else if(t==='reg')document.getElementById('modalReg').classList.add('show');else if(t==='deposito')document.getElementById('modalDeposito').classList.add('show');else if(t==='levantamento')document.getElementById('modalLevantamento').classList.add('show');else if(t==='carteira'){let box=document.getElementById('carteiraInfo');box.innerHTML=`<div style="background:#1a1a1a;padding:10px;border-radius:6px"><b>Saldo:</b> ${user?user.saldo.toLocaleString('pt-AO')+' Kz':'0'}<br><small>Conta: ${user?user.tel:'-'} • ${user?user.nome:'-'}</small></div>`;document.getElementById('modalCarteira').classList.add('show');}}
-function closeModal(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'));}
-function selectPay(el,met){metodoPag=met;document.querySelectorAll('.pay-option').forEach(p=>p.classList.remove('active'));el.classList.add('active');}
-function fazerRegisto(){let nome=document.getElementById('regNome').value.trim();let tel=document.getElementById('regTel').value.trim();let pass=document.getElementById('regPass').value.trim();if(!nome||!tel||!pass){alert('Preencha todos');return;}user={nome,tel,pass,saldo:0,id:Date.now()};localStorage.setItem('onexpress_user',JSON.stringify(user));alert('Conta criada na OneXpress Bet ZON! Faça depósito e ganhe 100% BÓNUS!');closeModal();location.reload();}
-function fazerLogin(){let tel=document.getElementById('loginTel').value.trim();let pass=document.getElementById('loginPass').value.trim();let u=JSON.parse(localStorage.getItem('onexpress_user')||'null');if(u&&u.tel===tel&&u.pass===pass){user=u;closeModal();location.reload();}else{alert('Dados incorretos.');}}
-function logout(){localStorage.removeItem('onexpress_user');location.reload();}
-function showSection(s){document.getElementById('secHistorico').style.display='none';document.getElementById('secJogos').style.display='none';document.getElementById('secCarteira').style.display='none';document.getElementById('tabsHistorico').style.display='none';if(s==='historico'){document.getElementById('secHistorico').style.display='block';document.getElementById('tabsHistorico').style.display='flex';document.getElementById('tituloSec').innerText='HISTÓRICO DE APOSTAS';renderHistorico();}else if(s==='jogos'){document.getElementById('secJogos').style.display='block';document.getElementById('tituloSec').innerText='JOGOS AO VIVO • OneXpress Bet ZON';}else if(s==='carteira'){document.getElementById('secCarteira').style.display='block';document.getElementById('tituloSec').innerText='CARTEIRA • OneXpress Bet ZON';renderTrans();atualizarSaldos();}}
-function gerarJogos(){let html='';Object.keys(equipes).forEach(liga=>{html+=`<div class="league">🏆 ${liga}</div>`;equipes[liga].forEach(j=>{let o1=(Math.random()*1.5+1.5).toFixed(2);let oX=(Math.random()*1.2+2.8).toFixed(2);let o2=(Math.random()*1.8+2.0).toFixed(2);html+=`<div class="match-card"><div class="match-top"><span>HOJE 20:00 • OneXpress Bet ZON</span><span style="color:#00ff88">● AO VIVO</span></div><div class="teams">${j[0]} <span style="color:#666">vs</span> ${j[1]}</div><div class="odds"><div class="odd" onclick="addBoletim('${j[0]} vs ${j[1]}','Casa vence','${o1}',this)"><small>1</small><b>${o1}</b></div><div class="odd" onclick="addBoletim('${j[0]} vs ${j[1]}','Empate','${oX}',this)"><small>X</small><b>${oX}</b></div><div class="odd" onclick="addBoletim('${j[0]} vs ${j[1]}','Fora vence','${o2}',this)"><small>2</small><b>${o2}</b></div></div></div>`;});});document.getElementById('listaJogos').innerHTML=html;showSection('jogos');}
-function addBoletim(jogo,mercado,odd,el){if(!user){openModal('login');return;}el.classList.toggle('active');let idx=boletim.findIndex(b=>b.jogo===jogo);if(idx>=0){boletim.splice(idx,1);}else{boletim.push({jogo,mercado,odd:parseFloat(odd)});}renderBoletim();}
-function renderBoletim(){let slip=document.getElementById('betSlip');if(boletim.length===0){slip.classList.remove('show');return;}slip.classList.add('show');document.getElementById('betCount').innerText=boletim.length;document.getElementById('betItens').innerHTML=boletim.map(b=>`<div class="bet-item"><span>${b.jogo}<br><small>${b.mercado}</small></span><b>${b.odd.toFixed(2)}</b></div>`).join('');let oddTotal=boletim.reduce((a,b)=>a*b.odd,1);document.getElementById('oddTotal').innerText=oddTotal.toFixed(2)+'x';calcularRetorno();}
-function calcularRetorno(){let valor=parseFloat(document.getElementById('valorAposta').value)||0;let oddTotal=boletim.reduce((a,b)=>a*b.odd,1);document.getElementById('retorno').innerText=(valor*oddTotal).toLocaleString('pt-AO')+' Kz';}
-function limparBoletim(){boletim=[];document.querySelectorAll('.odd.active').forEach(e=>e.classList.remove('active'));renderBoletim();}
-function fazerAposta(){if(!user){openModal('login');return;}let valor=parseFloat(document.getElementById('valorAposta').value)||0;if(valor<100){alert('Mín 100 Kz');return;}if(valor>user.saldo){alert('Saldo insuficiente! Saldo: '+user.saldo.toLocaleString('pt-AO')+' Kz\nFaça depósito via Multicaixa Express');openModal('deposito');return;}let oddTotal=boletim.reduce((a,b)=>a*b.odd,1);user.saldo-=valor;let aposta={id:Date.now(),data:new Date().toLocaleString(),jogos:[...boletim],valor,oddTotal,retorno:valor*oddTotal,status:'aberta'};apostas.unshift(aposta);trans.unshift({id:Date.now(),tipo:'aposta',valor:-valor,metodo:'Aposta #'+aposta.id,data:new Date().toLocaleString(),status:'concluído'});localStorage.setItem('onexpress_apostas',JSON.stringify(apostas));localStorage.setItem('onexpress_trans',JSON.stringify(trans));localStorage.setItem('onexpress_user',JSO
+let user=JSON.parse(localStorage.getItem('zon_user')||'null');
+let bol=[];let trans=JSON.parse(localStorage.getItem('zon_trans')||'[]');
+let jogos=[['Petro Luanda','1 Agosto'],['Man City','Arsenal'],['Real Madrid','Barcelona'],['Flamengo','Palmeiras'],['Sagrada','Interclube']];
+function init(){if(user){document.getElementById('bLogin').style.display='none';document.getElementById('bReg').style.display='none';document.getElementById('bal').classList.add('show');document.getElementById('menu').style.display='flex';document.getElementById('saldo').innerText=user.saldo.toLocaleString()+' Kz';document.getElementById('sSaq').innerText=user.saldo.toLocaleString()+' Kz';}render();}
+function render(){let h='';jogos.forEach(j=>{let o1=(Math.random()*1+1.5).toFixed(2);let o2=(Math.random()*1+2.5).toFixed(2);let o3=(Math.random()*1+2).toFixed(2);h+=`<div class="card"><div style="font-size:11px;color:#666">HOJE 20:00 ● AO VIVO • OneXpress Bet ZON</div><div style="font-weight:700;margin:6px 0">${j[0]} vs ${j[1]}</div><div class="odd"><div onclick="add('${j[0]} vs ${j[1]}','Casa',${o1},this)">1<br><b>${o1}</b></div><div onclick="add('${j[0]} vs ${j[1]}','Empate',${o2},this)">X<br><b>${o2}</b></div><div onclick="add('${j[0]} vs ${j[1]}','Fora',${o3},this)">2<br><b>${o3}</b></div></div></div>`;});document.getElementById('lista').innerHTML=h;}
+function openM(t){closeM();document.getElementById('m'+t.charAt(0).toUpperCase()+t.slice(1)).classList.add('show');}
+function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'));}
+function reg(){let n=document.getElementById('rNome').value;let t=document.getElementById('rTel').value;let p=document.getElementById('rPass').value;if(!n||!t||!p)return alert('Preencha tudo');user={nome:n,tel:t,pass:p,saldo:0};localStorage.setItem('zon_user',JSON.stringify(user));alert('Conta criada ZON! Faça deposito e ganhe 1000 Kz bonus');closeM();location.reload();}
+function login(){let t=document.getElementById('lTel').value;let p=document.getElementById('lPass').value;let u=JSON.parse(localStorage.getItem('zon_user')||'null');if(u&&u.tel==t&&u.pass==p){closeM();location.reload();}else alert('Dados errados');}
+function add(j,m,o,el){if(!user){openM('login');return;}el.classList.toggle('on');let i=bol.findIndex(b=>b.j==j);if(i>=0)bol.splice(i,1);else bol.push({j,m,o});showBet();}
+function showBet(){let b=document.getElementById('bet');if(bol.length==0){b.classList.remove('show');return;}b.classList.add('show');document.getElementById('itens').innerHTML=bol.map(x=>`<div style="font-size:11px">${x.j} - ${x.m} @${x.o}</div>`).join('');let tot=bol.reduce((a,b)=>a*b.o,1);document.getElementById('oddT').innerText=tot.toFixed(2)+'x';let v=parseFloat(document.getElementById('valor').value)||0;document.getElementById('ret').innerText=(v*tot).toLocaleString()+' Kz';}
+function apostar(){let v=parseFloat(document.getElementById('valor').value)||0;if(v>user.saldo){alert('Saldo insuficiente, faz deposito MCX Express');openM('dep');return;}user.saldo-=v;localStorage.setItem('zon_user',JSON.stringify(user));alert('Aposta feita ZON! Retorno: '+(v*bol.reduce((a,b)=>a*b.o,1)).toLocaleString()+' Kz');bol=[];showBet();init();}
+function dep(){let v=parseFloat(document.getElementById('dVal').value)||0;let t=document.getElementById('dTel').value;if(v<500)return alert('Min 500 Kz');user.saldo+=v+1000;alert('Deposito MCX Express confirmado! +'+v+' Kz + 1000 Kz BONUS ZON!');localStorage.setItem('zon_user',JSON.stringify(user));closeM();location.reload();}
+function saq(){let v=parseFloat(document.getElementById('sVal').value)||0;if(v<1000)return alert('Min 1000 Kz');if(v>user.saldo)return alert('Saldo insuficiente');user.saldo-=v;localStorage.setItem('zon_user',JSON.stringify(user));alert('Levantamento pedido! Receberas '+(v*0.98).toLocaleString()+' Kz via MCX Express em 15min-2h (taxa 2%)');closeM();location.reload();}
+document.getElementById('valor').addEventListener('input',showBet);
+init();
+</script></body></html>
