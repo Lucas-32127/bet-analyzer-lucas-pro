@@ -3,125 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KWANZA BET - LUCAS MIGUEL PRO</title>
+<title>OneXpress Bet ZON - Angola</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Roboto,sans-serif}
-body{background:#000;color:white;min-height:100vh}
-.top{background:#000;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a1a1a;position:sticky;top:0;z-index:20}
-.logo{font-weight:900;font-size:22px;line-height:1}
-.logo b{color:white;font-style:italic}
-.logo span{color:#d4ff00;display:block;font-size:18px;margin-top:-4px;font-style:italic;margin-left:20px}
-.user-area{display:flex;gap:8px;align-items:center}
-.btn-login{background:#d4ff00;color:#000;border:none;padding:8px 14px;border-radius:6px;font-weight:900;font-size:11px;cursor:pointer}
-.btn-reg{background:transparent;color:white;border:1px solid #333;padding:8px 14px;border-radius:6px;font-weight:700;font-size:11px;cursor:pointer}
-.balance{background:#1a1a1a;padding:6px 10px;border-radius:6px;font-size:11px;display:none}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#000;color:white;min-height:100vh;padding-bottom:80px}
+.top{background:#0a0a0a;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #ff6a00;position:sticky;top:0;z-index:20}
+.logo{font-weight:900;font-size:20px;line-height:1}
+.logo b{color:#ff6a00}
+.logo span{color:#00d4ff;display:block;font-size:11px;letter-spacing:2px;margin-top:1px;font-weight:800}
+.user-area{display:flex;gap:6px;align-items:center}
+.btn-login{background:#ff6a00;color:white;border:none;padding:7px 12px;border-radius:6px;font-weight:900;font-size:10px;cursor:pointer}
+.btn-reg{background:#222;color:white;border:1px solid #333;padding:7px 12px;border-radius:6px;font-weight:700;font-size:10px;cursor:pointer}
+.balance{background:#1a1a1a;border:1px solid #ff6a00;padding:5px 10px;border-radius:6px;font-size:11px;display:none;cursor:pointer}
 .balance.show{display:block}
-.balance b{color:#d4ff00}
-.tabs-head{background:#000;padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #1a1a1a}
-.back-btn{width:32px;height:32px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.tabs-head h2{font-size:14px;font-weight:700}
+.balance b{color:#00ff88}
+.menu-financeiro{display:flex;gap:8px;padding:10px;background:#0a0a0a;border-bottom:1px solid #1a1a1a}
+.btn-fin{flex:1;padding:10px;border-radius:8px;border:none;font-weight:900;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-dep{background:#00c851;color:white}
+.btn-saq{background:#ff6a00;color:white}
+.btn-hist{background:#1e1e1e;color:#aaa;border:1px solid #333}
+.tabs-head{background:#000;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #1a1a1a}
 .tabs{display:flex;gap:0;overflow-x:auto;background:#000;border-bottom:2px solid #1a1a1a}
-.tab{padding:12px 16px;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer;color:#777;border-bottom:2px solid transparent;margin-bottom:-2px}
-.tab.active{color:white;border-bottom:2px solid #d4ff00}
-.filter-bar{background:#1e1e1e;margin:12px;border-radius:8px;padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer}
-.filter-bar.txt{flex:1}
-.filter-bar.txt small{display:block;color:#aaa;font-size:12px}
-.empty{text-align:center;margin-top:120px;color:#666;font-size:15px}
-.games{padding:10px}
-.league{font-size:11px;color:#888;padding:10px 4px 6px;font-weight:700}
-.match-card{background:#111;border:1px solid #222;border-radius:8px;padding:10px;margin-bottom:8px}
-.match-top{display:flex;justify-content:space-between;font-size:11px;color:#888;margin-bottom:8px}
-.teams{font-size:13px;font-weight:600;color:white;line-height:1.4}
+.tab{padding:12px 14px;font-size:10px;font-weight:800;white-space:nowrap;cursor:pointer;color:#666;border-bottom:2px solid transparent;margin-bottom:-2px}
+.tab.active{color:#ff6a00;border-bottom:2px solid #ff6a00}
+.games{padding:8px}
+.league{font-size:11px;color:#ff6a00;padding:10px 4px 6px;font-weight:800}
+.match-card{background:#111;border:1px solid #222;border-radius:10px;padding:10px;margin-bottom:8px}
+.match-top{display:flex;justify-content:space-between;font-size:10px;color:#666;margin-bottom:8px}
+.teams{font-size:13px;font-weight:700;color:white}
 .odds{display:flex;gap:6px;margin-top:8px}
-.odd{flex:1;background:#1e1e1e;border:1px solid #2a2a2a;border-radius:6px;padding:8px;text-align:center;cursor:pointer}
-.odd.active{background:#d4ff00;color:#000;border-color:#d4ff00}
-.odd small{display:block;font-size:9px;color:#888}
-.odd b{font-size:13px}
-.bet-slip{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #d4ff00;padding:12px;transform:translateY(100%);transition:0.3s;z-index:30}
-.bet-slip.show{transform:translateY(0)}
-.bet-slip-top{display:flex;justify-content:space-between;margin-bottom:8px;font-size:12px}
-.bet-item{background:#1e1e1e;padding:6px 8px;border-radius:6px;font-size:11px;margin-bottom:4px;display:flex;justify-content:space-between}
-.input-stake{width:100%;background:#000;border:1px solid #333;color:white;padding:10px;border-radius:6px;margin:8px 0}
-.btn-apostar{width:100%;background:#d4ff00;color:#000;border:none;padding:12px;border-radius:6px;font-weight:900;cursor:pointer}
-.chat-btn{position:fixed;bottom:20px;right:16px;width:56px;height:56px;background:#d4ff00;border-radius:18px 18px 4px 18px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:50;align-items:center;justify-content:center;padding:20px}
-.modal.show{display:flex}
-.modal-box{background:#111;border:1px solid #333;border-radius:12px;padding:20px;width:100%;max-width:360px}
-.modal-box h3{color:#d4ff00;margin-bottom:14px;text-align:center}
-.modal-box input{width:100%;background:#000;border:1px solid #333;color:white;padding:12px;border-radius:6px;margin-bottom:10px}
-.modal-box button{width:100%;padding:12px;border-radius:6px;border:none;font-weight:900;cursor:pointer;margin-top:6px}
-.btn-primary{background:#d4ff00;color:#000}
-.btn-secondary{background:#222;color:white}
-.bet-history-item{background:#111;border:1px solid #222;border-radius:8px;padding:12px;margin:8px 12px}
-.bet-history-item.status{font-size:10px;padding:3px 8px;border-radius:4px;display:inline-block;font-weight:800}
-.status.aberta{background:#ffcc00;color:#000}
-.status.ganhou{background:#00ff88;color:#000}
-.status.perdido{background:#ff4444;color:white}
-</style>
-</head>
-<body>
-<div class="top">
-<div class="logo"><b>KWANZA</b><span>bet</span></div>
-<div class="user-area">
-<div id="balance" class="balance"><small>SALDO</small> <b id="saldoTxt">0,00 Kz</b></div>
-<button id="btnLoginTop" class="btn-login" onclick="openModal('login')">ENTRAR</button>
-<button id="btnRegTop" class="btn-reg" onclick="openModal('reg')">REGISTAR</button>
-<div id="userLogged" style="display:none;align-items:center;gap:8px"><span id="userName" style="font-size:12px;font-weight:700"></span><button class="btn-reg" onclick="logout()" style="padding:4px 8px">SAIR</button></div>
-</div>
-</div>
-<div class="tabs-head"><div class="back-btn" onclick="showSection('jogos')">‹</div><h2 id="tituloSec">HISTÓRICO DE APOSTAS</h2></div>
-<div class="tabs" id="tabsHistorico">
-<div class="tab active" onclick="filtrarHist('tudo',this)">TUDO</div>
-<div class="tab" onclick="filtrarHist('aberta',this)">APOSTAS ABERTAS</div>
-<div class="tab" onclick="filtrarHist('retirado',this)">RETIRADO</div>
-<div class="tab" onclick="filtrarHist('ganhou',this)">GANHOU</div>
-<div class="tab" onclick="filtrarHist('perdido',this)">PERDIDO</div>
-<div class="tab" onclick="filtrarHist('devolvido',this)">DEVOLVIDO</div>
-</div>
-<div id="secHistorico">
-<div class="filter-bar"><div class="txt"><b>Filtro</b><small id="filtroTxt">Tudo, 24 horas</small></div><div>⌄</div></div>
-<div id="historicoLista"><div class="empty">Sem apostas para mostrar</div></div>
-</div>
-<div id="secJogos" style="display:none">
-<div class="filter-bar" style="background:#d4ff00;color:#000" onclick="gerarJogos()"><div class="txt"><b style="color:#000">⚽ JOGOS AO VIVO</b><small style="color:#333">Girabola, Premier, La Liga</small></div></div>
-<div class="games" id="listaJogos"></div>
-</div>
-<div style="display:flex;gap:8px;padding:0 12px;margin:8px 0">
-<button class="btn-login" style="flex:1" onclick="showSection('jogos')">⚽ APOSTAR</button>
-<button class="btn-reg" style="flex:1" onclick="showSection('historico')">📜 HISTÓRICO</button>
-</div>
-<div class="bet-slip" id="betSlip">
-<div class="bet-slip-top"><span>Boletim (<span id="betCount">0</span>)</span><span onclick="limparBoletim()" style="color:#ff4444;cursor:pointer">Limpar</span></div>
-<div id="betItens"></div>
-<input id="valorAposta" class="input-stake" type="number" placeholder="Valor da aposta (Kz)" value="1000" oninput="calcularRetorno()">
-<div style="display:flex;justify-content:space-between;font-size:12px;margin:6px 0"><span>Odd total:</span><b id="oddTotal">1.00x</b></div>
-<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px"><span>Retorno possível:</span><b id="retorno" style="color:#d4ff00">0,00 Kz</b></div>
-<button class="btn-apostar" onclick="fazerAposta()">FAZER APOSTA</button>
-</div>
-<div class="chat-btn" onclick="alert('Suporte')">💬</div>
-<div id="modalLogin" class="modal"><div class="modal-box"><h3>ENTRAR NA KWANZA BET</h3><input id="loginTel" placeholder="Telefone" type="tel"><input id="loginPass" placeholder="Palavra-passe" type="password"><button class="btn-primary" onclick="fazerLogin()">ENTRAR</button><button class="btn-secondary" onclick="closeModal()">CANCELAR</button><p style="font-size:11px;text-align:center;margin-top:10px;color:#888">Não tem conta? <span style="color:#d4ff00;cursor:pointer" onclick="openModal('reg')">Registar</span></p></div></div>
-<div id="modalReg" class="modal"><div class="modal-box"><h3>CRIAR CONTA KWANZA BET</h3><input id="regNome" placeholder="Nome completo"><input id="regTel" placeholder="Telefone" type="tel"><input id="regPass" placeholder="Criar palavra-passe" type="password"><div style="font-size:10px;color:#888;margin:6px 0">Ao registar ganha 500 Kz de bónus!</div><button class="btn-primary" onclick="fazerRegisto()">CRIAR CONTA + 500 Kz BÓNUS</button><button class="btn-secondary" onclick="closeModal()">CANCELAR</button></div></div>
-<script>
-let user=JSON.parse(localStorage.getItem('kwanza_user')||'null');
-let apostas=JSON.parse(localStorage.getItem('kwanza_apostas')||'[]');
-let boletim=[];let filtroAtual='tudo';
-const equipes={'Girabola':[['Petro de Luanda','1º de Agosto'],['Sagrada Esperança','Interclube'],['Wiliete','Kabuscorp']],'Premier League':[['Man City','Arsenal'],['Liverpool','Chelsea']],'La Liga':[['Real Madrid','Barcelona'],['Atletico','Sevilla']],'Brasileirão':[['Flamengo','Palmeiras'],['Corinthians','São Paulo']]};
-function init(){if(user){document.getElementById('btnLoginTop').style.display='none';document.getElementById('btnRegTop').style.display='none';document.getElementById('userLogged').style.display='flex';document.getElementById('userName').innerText=user.nome.split(' ')[0];document.getElementById('balance').classList.add('show');document.getElementById('saldoTxt').innerText=(user.saldo||0).toLocaleString('pt-AO')+' Kz';}gerarJogos();renderHistorico();}
-function openModal(t){document.getElementById('modalLogin').classList.remove('show');document.getElementById('modalReg').classList.remove('show');if(t==='login')document.getElementById('modalLogin').classList.add('show');else document.getElementById('modalReg').classList.add('show');}
-function closeModal(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'));}
-function fazerRegisto(){let nome=document.getElementById('regNome').value.trim();let tel=document.getElementById('regTel').value.trim();let pass=document.getElementById('regPass').value.trim();if(!nome||!tel||!pass){alert('Preencha todos');return;}user={nome,tel,pass,saldo:500,id:Date.now()};localStorage.setItem('kwanza_user',JSON.stringify(user));alert('Conta criada! Ganhou 500 Kz bónus!');closeModal();location.reload();}
-function fazerLogin(){let tel=document.getElementById('loginTel').value.trim();let pass=document.getElementById('loginPass').value.trim();let u=JSON.parse(localStorage.getItem('kwanza_user')||'null');if(u&&u.tel===tel&&u.pass===pass){user=u;localStorage.setItem('kwanza_user',JSON.stringify(u));closeModal();location.reload();}else{alert('Telefone ou senha incorretos.');}}
-function logout(){localStorage.removeItem('kwanza_user');location.reload();}
-function showSection(s){if(s==='historico'){document.getElementById('secHistorico').style.display='block';document.getElementById('secJogos').style.display='none';document.getElementById('tabsHistorico').style.display='flex';document.getElementById('tituloSec').innerText='HISTÓRICO DE APOSTAS';renderHistorico();}else{document.getElementById('secHistorico').style.display='none';document.getElementById('secJogos').style.display='block';document.getElementById('tabsHistorico').style.display='none';document.getElementById('tituloSec').innerText='JOGOS AO VIVO';}}
-function gerarJogos(){let html='';let ligas=Object.keys(equipes);ligas.forEach(liga=>{html+=`<div class="league">🏆 ${liga}</div>`;equipes[liga].forEach(j=>{let o1=(Math.random()*1.5+1.5).toFixed(2);let oX=(Math.random()*1.2+2.8).toFixed(2);let o2=(Math.random()*1.8+2.0).toFixed(2);html+=`<div class="match-card"><div class="match-top"><span>HOJE 20:00</span><span style="color:#00ff88">● AO VIVO</span></div><div class="teams">${j[0]}<br><small>vs</small><br>${j[1]}</div><div class="odds"><div class="odd" onclick="addBoletim('${j[0]} vs ${j[1]}','Casa vence','${o1}',this)"><small>1</small><b>${o1}</b></div><div class="odd" onclick="addBoletim('${j[0]} vs ${j[1]}','Empate','${oX}',this)"><small>X</small><b>${oX}</b></div><div class="odd" onclick="addBoletim('${j[0]} vs ${j[1]}','Fora vence','${o2}',this)"><small>2</small><b>${o2}</b></div></div></div>`;});});document.getElementById('listaJogos').innerHTML=html;showSection('jogos');}
-function addBoletim(jogo,mercado,odd,el){if(!user){openModal('login');return;}el.classList.toggle('active');let idx=boletim.findIndex(b=>b.jogo===jogo);if(idx>=0&&boletim[idx].odd===odd&&boletim[idx].mercado===mercado){boletim.splice(idx,1);}else{if(idx>=0)boletim.splice(idx,1);boletim.push({jogo,mercado,odd:parseFloat(odd)});}renderBoletim();}
-function renderBoletim(){let slip=document.getElementById('betSlip');if(boletim.length===0){slip.classList.remove('show');return;}slip.classList.add('show');document.getElementById('betCount').innerText=boletim.length;document.getElementById('betItens').innerHTML=boletim.map(b=>`<div class="bet-item"><span>${b.jogo}<br><small>${b.mercado}</small></span><b>${b.odd.toFixed(2)}</b></div>`).join('');let oddTotal=boletim.reduce((a,b)=>a*b.odd,1);document.getElementById('oddTotal').innerText=oddTotal.toFixed(2)+'x';calcularRetorno();}
-function calcularRetorno(){let valor=parseFloat(document.getElementById('valorAposta').value)||0;let oddTotal=boletim.reduce((a,b)=>a*b.odd,1);document.getElementById('retorno').innerText=(valor*oddTotal).toLocaleString('pt-AO')+' Kz';}
-function limparBoletim(){boletim=[];document.querySelectorAll('.odd.active').forEach(e=>e.classList.remove('active'));renderBoletim();}
-function fazerAposta(){if(!user){openModal('login');return;}let valor=parseFloat(document.getElementById('valorAposta').value)||0;if(valor<=0){alert('Coloque valor');return;}if(valor>user.saldo){alert('Saldo insuficiente! Saldo: '+user.saldo+' Kz');return;}let oddTotal=boletim.reduce((a,b)=>a*b.odd,1);user.saldo-=valor;let aposta={id:Date.now(),data:new Date().toLocaleString(),jogos:[...boletim],valor,oddTotal,retorno:valor*oddTotal,status:'aberta'};apostas.unshift(aposta);localStorage.setItem('kwanza_apostas',JSON.stringify(apostas));localStorage.setItem('kwanza_user',JSON.stringify(user));document.getElementById('saldoTxt').innerText=user.saldo.toLocaleString('pt-AO')+' Kz';alert('Aposta feita! ID: '+aposta.id);limparBoletim();showSection('historico');renderHistorico();}
-function renderHistorico(){let lista=document.getElementById('historicoLista');let filtradas=apostas;if(filtroAtual!=='tudo')filtradas=apostas.filter(a=>a.status===filtroAtual);if(filtradas.length===0){lista.innerHTML=`<div class="empty">Sem apostas para mostrar<br><small style="font-size:12px;margin-top:8px;display:block">Faça a sua primeira aposta!</small></div>`;return;}lista.innerHTML=filtradas.map(a=>`<div class="bet-history-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><small>${a.data}</small><span class="status ${a.status}">${a.status.toUpperCase()}</span></div>${a.jogos.map(j=>`<div style="font-size:11px;margin:2px 0">• ${j.jogo} - ${j.mercado} @${j.odd.toFixed(2)}</div>`).join('')}<div style="display:flex;justify-content:space-between;margin-top:8px;font-size:12px"><span>${a.valor} Kz @${a.oddTotal.toFixed(2)}x</span><b style="color:#d4ff00">${a.retorno.toLocaleString('pt-AO')} Kz</b></div></div>`).join('');}
-function filtrarHist(filtro,el){filtroAtual=filtro;document.querySelectorAll('#tabsHistorico.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.getElementById('filtroTxt').innerText=filtro.charAt(0).toUpperCase()+filtro.slice(1)+', 24 horas';renderHistorico();}
-init();
-</script>
-</body>
-</html>
+.odd{flex:1;background:#1a1a1a;border:1px solid #2a2a2
