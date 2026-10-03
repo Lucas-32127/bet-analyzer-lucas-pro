@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OneXpress Bet ZON PRO MAX</title>
+<title>OneXpress Bet ZON PRO MAX FIX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
 body{background:#080a12;color:#fff;padding-bottom:95px}
@@ -19,7 +19,7 @@ body{background:#080a12;color:#fff;padding-bottom:95px}
 .nav2 button{white-space:nowrap;background:#181b2e;border:1px solid #2a2e5a;color:#8a8fb5;padding:9px 14px;border-radius:20px;font-size:11px;font-weight:700}
 .nav2 button.active{background:#fff;color:#000}
 .tools{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;padding:10px}
-.tool{background:#181b2e;border:1px solid #22264a;border-radius:14px;padding:12px 6px;text-align:center}
+.tool{background:#181b2e;border:1px solid #22264a;border-radius:14px;padding:12px 6px;text-align:center;cursor:pointer}
 .tool b{font-size:11px;display:block}
 .tool small{font-size:9px;color:#7a7fa8}
 .match{background:#181b2e;border:1px solid #22264a;border-radius:16px;margin:0 10px 12px;padding:12px}
@@ -29,7 +29,7 @@ body{background:#080a12;color:#fff;padding-bottom:95px}
 .bet{position:fixed;bottom:78px;left:10px;right:10px;background:#181b2e;border:2px solid #ff6a00;border-radius:18px;padding:12px;display:none;z-index:30;max-height:70vh;overflow:auto}
 .bet.show{display:block}
 .bottom{position:fixed;bottom:0;left:0;right:0;background:#0f1220;border-top:1px solid #1e2240;display:flex;justify-content:space-around;padding:8px 0;z-index:40}
-.bottom div{text-align:center;font-size:9px;color:#6a6fa0;flex:1}
+.bottom div{text-align:center;font-size:9px;color:#6a6fa0;flex:1;cursor:pointer}
 .bottom div.active{color:#ff6a00}
 .bottom div i{font-size:20px;display:block}
 .modal{display:none;position:fixed;inset:0;background:rgba(5,6,15,.92);z-index:100;align-items:center;justify-content:center;padding:14px}
@@ -50,7 +50,7 @@ body{background:#080a12;color:#fff;padding-bottom:95px}
 <button class="btn btn-d" id="btnReg" onclick="openM('reg')">REGISTAR</button>
 </div>
 </div>
-<div id="menuFin" style="display:none;padding:10px;background:#0f1220;gap:8px;display:flex">
+<div id="menuFin" style="display:none;padding:10px;background:#0f1220;gap:8px">
 <button class="btn btn-g" style="flex:1" onclick="openM('dep')">DEPOSITAR MCX</button>
 <button class="btn btn-o" style="flex:1" onclick="openM('saq')">LEVANTAR</button>
 <button class="btn btn-d" style="flex:1" onclick="openM('carteira')">CARTEIRA</button>
@@ -122,95 +122,16 @@ body{background:#080a12;color:#fff;padding-bottom:95px}
 <div id="mPerfil" class="modal"><div class="sheet"><h3 style="text-align:center;color:#ff6a00">PERFIL</h3><div id="perfilBox"></div><button style="background:#222;color:#fff;margin-top:12px" onclick="closeM()">FECHAR</button></div></div>
 <div id="mBuilder" class="modal"><div class="sheet"><h3 style="text-align:center;color:#ff6a00">BET BUILDER</h3><p style="font-size:11px;color:#888">Combina mercados do mesmo jogo</p><div style="background:#0f1220;padding:10px;border-radius:8px;margin:8px 0">Odd: <b style="color:#ff6a00">4.85x</b></div><button style="background:#ff6a00;color:#fff" onclick="alert('Bet Builder adicionado!');closeM();">ADICIONAR</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
 <script>
-var user=JSON.parse(localStorage.getItem('zonpro_user')||'null');
-var trans=JSON.parse(localStorage.getItem('zonpro_trans')||'[]');
-var boletim=[];
-var jogosData=[
-{liga:'Girabola',a:'Petro Luanda',b:'1 Agosto',min:'78m',score:'2-1',o1:2.15,oX:3.40,o2:2.95},
-{liga:'Premier League',a:'Man City',b:'Arsenal',min:'34m',score:'1-0',o1:1.85,oX:3.80,o2:4.20},
-{liga:'La Liga',a:'Real Madrid',b:'Barcelona',min:'12m',score:'0-0',o1:2.45,oX:3.30,o2:2.85},
-{liga:'Girabola',a:'Sagrada',b:'Interclube',min:'HOJE 18:00',score:'vs',o1:1.95,oX:3.20,o2:3.60},
-{liga:'Brasileirao',a:'Flamengo',b:'Palmeiras',min:'HOJE 20:00',score:'vs',o1:2.10,oX:3.10,o2:3.40}
-];
-function init(){
-if(user){
-document.getElementById('btnLogin').style.display='none';
-document.getElementById('btnReg').style.display='none';
-document.getElementById('pillBal').style.display='flex';
-document.getElementById('menuFin').style.display='flex';
-updSaldo();
-}
-renderJogos();renderTrans();
-var dv=document.getElementById('dVal');
-if(dv){dv.addEventListener('input',function(){var v=parseFloat(dv.value||0);document.getElementById('depTotal').innerText=(v*2).toLocaleString()+' Kz';});}
-var va=document.getElementById('valorAposta');
-if(va){va.addEventListener('input',renderBet);}
-}
-function updSaldo(){
-var s=user?user.saldo:0;
-document.getElementById('saldoTxt').innerText=s.toLocaleString()+' Kz';
-document.getElementById('cartSaldo').innerText=s.toLocaleString()+' Kz';
-document.getElementById('sSaldo').innerText=s.toLocaleString()+' Kz';
-}
-function renderJogos(){
-var el=document.getElementById('jogos');
-var h='';
-for(var i=0;i<jogosData.length;i++){
-var j=jogosData[i];
-h+='<div class="match">';
-h+='<div style="display:flex;justify-content:space-between;font-size:10px;color:#6a6fa0;margin-bottom:8px"><span>'+j.liga+' - '+j.min+'</span><span style="color:#00ff88">'+j.score+'</span></div>';
-h+='<div style="font-weight:800;display:flex;justify-content:space-between;font-size:13px"><span>'+j.a+'</span><span>'+j.b+'</span></div>';
-h+='<div class="odds3">';
-h+='<div class="odd" onclick="addBet('+i+',0,this)"><small>1</small><br><b>'+j.o1+'</b></div>';
-h+='<div class="odd" onclick="addBet('+i+',1,this)"><small>X</small><br><b>'+j.oX+'</b></div>';
-h+='<div class="odd" onclick="addBet('+i+',2,this)"><small>2</small><br><b>'+j.o2+'</b></div>';
-h+='</div></div>';
-}
-el.innerHTML=h;
-}
-function showTab(t){
-document.getElementById('tab-jogos').style.display=t=='jogos'?'block':'none';
-document.getElementById('tab-aviator').style.display=t=='aviator'?'block':'none';
-document.getElementById('tab-casino').style.display=t=='casino'?'block':'none';
-}
-function openM(t){closeM();var id='m'+t.charAt(0).toUpperCase()+t.slice(1);var m=document.getElementById(id);if(m)m.classList.add('show');if(t=='carteira'){updSaldo();renderTrans();}if(t=='perfil'){var b=document.getElementById('perfilBox');b.innerHTML=user?'<div style="background:#0f1220;padding:12px;border-radius:10px"><b>'+user.nome+'</b><br><small>'+user.tel+'</small><br>Saldo: '+user.saldo.toLocaleString()+' Kz</div>':'Faca login';}}
+var user=null;var trans=[];var boletim=[];
+var jogosData=[{liga:'Girabola',a:'Petro Luanda',b:'1 Agosto',min:'78m',score:'2-1',o1:2.15,oX:3.40,o2:2.95},{liga:'Premier League',a:'Man City',b:'Arsenal',min:'34m',score:'1-0',o1:1.85,oX:3.80,o2:4.20},{liga:'La Liga',a:'Real Madrid',b:'Barcelona',min:'12m',score:'0-0',o1:2.45,oX:3.30,o2:2.85},{liga:'Girabola',a:'Sagrada',b:'Interclube',min:'HOJE 18:00',score:'vs',o1:1.95,oX:3.20,o2:3.60},{liga:'Brasileirao',a:'Flamengo',b:'Palmeiras',min:'HOJE 20:00',score:'vs',o1:2.10,oX:3.10,o2:3.40}];
+function loadData(){try{user=JSON.parse(localStorage.getItem('zonpro_user')||'null');}catch(e){user=null;}try{trans=JSON.parse(localStorage.getItem('zonpro_trans')||'[]');}catch(e){trans=[];}}
+function init(){loadData();if(user){var b1=document.getElementById('btnLogin');if(b1)b1.style.display='none';var b2=document.getElementById('btnReg');if(b2)b2.style.display='none';var p=document.getElementById('pillBal');if(p)p.style.display='flex';var mf=document.getElementById('menuFin');if(mf)mf.style.display='flex';updSaldo();}renderJogos();renderTrans();var dv=document.getElementById('dVal');if(dv){dv.addEventListener('input',function(){var v=parseFloat(dv.value||0);var el=document.getElementById('depTotal');if(el)el.innerText=(v*2).toLocaleString()+' Kz';});}var va=document.getElementById('valorAposta');if(va){va.addEventListener('input',renderBet);}}
+function updSaldo(){if(!user)return;var s=user.saldo||0;var e1=document.getElementById('saldoTxt');if(e1)e1.innerText=s.toLocaleString()+' Kz';var e2=document.getElementById('cartSaldo');if(e2)e2.innerText=s.toLocaleString()+' Kz';var e3=document.getElementById('sSaldo');if(e3)e3.innerText=s.toLocaleString()+' Kz';}
+function renderJogos(){var el=document.getElementById('jogos');if(!el)return;var h='';for(var i=0;i<jogosData.length;i++){var j=jogosData[i];h+='<div class="match"><div style="display:flex;justify-content:space-between;font-size:10px;color:#6a6fa0;margin-bottom:8px"><span>'+j.liga+' - '+j.min+'</span><span style="color:#00ff88">'+j.score+'</span></div><div style="font-weight:800;display:flex;justify-content:space-between;font-size:13px"><span>'+j.a+'</span><span>'+j.b+'</span></div><div class="odds3"><div class="odd" onclick="addBet('+i+',0,this)"><small>1</small><br><b>'+j.o1+'</b></div><div class="odd" onclick="addBet('+i+',1,this)"><small>X</small><br><b>'+j.oX+'</b></div><div class="odd" onclick="addBet('+i+',2,this)"><small>2</small><br><b>'+j.o2+'</b></div></div></div>';}el.innerHTML=h;}
+function showTab(t){var tj=document.getElementById('tab-jogos');if(tj)tj.style.display=t=='jogos'?'block':'none';var ta=document.getElementById('tab-aviator');if(ta)ta.style.display=t=='aviator'?'block':'none';var tc=document.getElementById('tab-casino');if(tc)tc.style.display=t=='casino'?'block':'none';}
+function openM(t){closeM();var id='m'+t.charAt(0).toUpperCase()+t.slice(1);var m=document.getElementById(id);if(m)m.classList.add('show');if(t=='carteira'){updSaldo();renderTrans();}if(t=='perfil'){var b=document.getElementById('perfilBox');if(b)b.innerHTML=user?'<div style="background:#0f1220;padding:12px;border-radius:10px"><b>'+user.nome+'</b><br><small>'+user.tel+'</small><br>Saldo: '+(user.saldo||0).toLocaleString()+' Kz</div>':'Faca login';}}
 function closeM(){var mods=document.querySelectorAll('.modal');for(var i=0;i<mods.length;i++)mods[i].classList.remove('show');}
 function reg(){var n=document.getElementById('rNome').value;var t=document.getElementById('rTel').value;var p=document.getElementById('rPass').value;if(!n||!t||!p){alert('Preencha tudo');return;}user={nome:n,tel:t,pass:p,saldo:0};localStorage.setItem('zonpro_user',JSON.stringify(user));alert('Conta criada!');closeM();location.reload();}
-function login(){var t=document.getElementById('lTel').value;var p=document.getElementById('lPass').value;var u=JSON.parse(localStorage.getItem('zonpro_user')||'null');if(u&&u.tel==t&&u.pass==p){closeM();location.reload();}else alert('Dados errados');}
-function addBet(idx,tipo,el){
-if(!user){openM('login');return;}
-el.classList.toggle('on');
-var j=jogosData[idx];
-var odd=tipo==0?j.o1:tipo==1?j.oX:j.o2;
-var nome=tipo==0?j.a+' vence':tipo==1?'Empate':j.b+' vence';
-var jogoNome=j.a+' vs '+j.b;
-var pos=-1;
-for(var i=0;i<boletim.length;i++){if(boletim[i].jogo==jogoNome){pos=i;break;}}
-if(pos>=0)boletim.splice(pos,1);
-if(el.classList.contains('on')){
-boletim.push({jogo:jogoNome,mercado:nome,odd:odd});
-}
-renderBet();
-}
-function renderBet(){
-var slip=document.getElementById('betSlip');
-if(boletim.length==0){slip.classList.remove('show');document.getElementById('bottomCount').innerText='0';return;}
-slip.classList.add('show');
-document.getElementById('betCount').innerText=boletim.length;
-document.getElementById('bottomCount').innerText=boletim.length;
-var html='';
-for(var i=0;i<boletim.length;i++){html+='<div style="background:#0f1220;padding:8px;border-radius:8px;margin-bottom:4px;display:flex;justify-content:space-between;font-size:11px"><span>'+boletim[i].jogo+'<br><small style="color:#8a8fb5">'+boletim[i].mercado+'</small></span><b>'+boletim[i].odd+'</b></div>';}
-document.getElementById('betItens').innerHTML=html;
-var tot=1;for(var i=0;i<boletim.length;i++)tot*=boletim[i].odd;
-document.getElementById('oddTotal').innerText=tot.toFixed(2)+'x';
-var v=parseFloat(document.getElementById('valorAposta').value)||0;
-document.getElementById('retorno').innerText=(v*tot).toLocaleString()+' Kz';
-}
-function limpar(){boletim=[];var odds=document.querySelectorAll('.odd.on');for(var i=0;i<odds.length;i++)odds[i].classList.remove('on');renderBet();}
-function toggleBet(){var s=document.getElementById('betSlip');s.classList.toggle('show');}
-function fazerAposta(){if(!user){openM('login');return;}var v=parseFloat(document.getElementById('valorAposta').value)||0;if(v<100){alert('Min 100 Kz');return;}if(v>user.saldo){alert('Saldo insuficiente! Deposita MCX');openM('dep');return;}var tot=1;for(var i=0;i<boletim.length;i++)tot*=boletim[i].odd;var ret=v*tot;user.saldo-=v;trans.unshift({id:Date.now(),tipo:'aposta',valor:-v,metodo:'Aposta ZON PRO',data:new Date().toLocaleString(),status:'aberta'});localStorage.setItem('zonpro_trans',JSON.stringify(trans));localStorage.setItem('zonpro_user',JSON.stringify(user));updSaldo();alert('APOSTA FEITA! Odd '+tot.toFixed(2)+'x | Retorno '+ret.toLocaleString()+' Kz');limpar();}
-function fazerDep(){var v=parseFloat(document.getElementById('dVal').value)||0;var t=document.getElementById('dTel').value;if(v<500){alert('Min 500 Kz');return;}if(!t){alert('Telefone MCX');return;}alert('Pedido via MCX '+v+' Kz');setTimeout(function(){var bonus=v;user.saldo+=v+bonus;trans.unshift({id:Date.now(),tipo:'dep',valor:v+bonus,metodo:'MCX Express '+t,data:new Date().toLocaleString(),status:'concluido'});localStorage.setItem('zonpro_user',JSON.stringify(user));localStorage.setItem('zonpro_trans',JSON.stringify(trans));updSaldo();renderTrans();closeM();alert('DEPOSITO CONFIRMADO! +'+(v+bonus).toLocaleString()+' Kz');},1200);}
-function fazerSaq(){var v=parseFloat(document.getElementById('sVal').value)||0;var iban=document.getElementById('sIban').value;if(v<1000){alert('Min 1000 Kz');return;}if(v>user.saldo){alert('Saldo insuficiente');return;}if(!iban){alert('IBAN/telefone');return;}user.saldo-=v;trans.unshift({id:Date.now(),tipo:'saq',valor:-v,metodo:document.getElementById('sMet').value+' '+iban,data:new Date().toLocaleString(),status:'pendente'});localStorage.setItem('zonpro_user',JSON.stringify(user));localStorage.setItem('zonpro_trans',JSON.stringify(trans));updSaldo();renderTrans();closeM();alert('LEVANTAMENTO PEDIDO! Recebes '+(v*0.98).toLocaleString()+' Kz');}
-function renderTrans(){var el=document.getElementById('listaTrans');if(!el)return;if(trans.length==0){el.innerHTML='<div style="text-align:center;color:#555;font-size:11px;padding:20px">Sem transacoes - Demo</div>';return;}var h='';for(var i=0;i<Math.min(trans.length,10);i++){var t=trans[i];h+='<div style="background:#0f1220;border:1px solid #22264a;border-radius:10px;padding:10px;display:flex;justify-content:space-between;margin-bottom:6px;font-size:11px"><div><b>'+(t.tipo=='dep'?'DEPOSITO':t.tipo=='saq'?'LEVANTAMENTO':'APOSTA')+'</b><br><small style="color:#6a6fa0">'+t.data+'</small></div><div><b style="color:'+(t.valor>0?'#00ff88':'#fff')+'">'+(t.valor>0?'+':'')+t.valor.toLocaleString()+' Kz</b></div></div>';}el.innerHTML=h;}
-var aviInterval=null;var aviMult=1.0;var aviApostado=false;var aviValor=0;
-function aviApostar(){if(!user){openM('login');retu
+function login(){var t=document.getElementById('lTel').value;var p=document.getElementById('lPass').value;var u=null;try{u=JSON.parse(localStorage.getItem('zonpro_user')||'null');}catch(e){}if(u&&u.tel==t&&u.pass==p){closeM();location.reload();}else alert('Dados errados');}
+function addBet(idx,tipo,el){if(!user){openM('login');return;}el.classList.toggle('on');var j=jogosData[idx];var odd=tipo==0?j.o1:tipo==1?j.oX:j.o2;var nome=tipo==0?j.a+' vence':tipo==1?'Empate':j.b+' vence';var jogoNome=j.a+' vs '+j.b;var pos=-1;for(var i=0;i<boletim.length;i++){if(boletim[i].jogo==jogoNome){pos=i;break;}}if(pos>=0)boletim.splice(pos,1);if(el.classList.contains('on')){boletim.push({jogo:jogoNome,mercado:nome,odd:odd});}renderBet();}
+function renderBet(){var slip=document.getElementById('betSlip');if(!slip)return;if(boletim.length==0){slip.classList.remove('show');var bc=document.getElementById('bottomCount');if(bc)bc.innerText='0';return;}slip.classList.add('show');var bc1=document.getElementById('betCount');if(bc1)bc1.innerText=boletim.length;var bc2=document.getElementById('bottomCount');if(bc2)bc2.innerText=boletim.length;var html='';for(var i=0;i<boletim.length;i++){html+='<div style="background:#0f1220;padding:8px;border-radius:8px;margin-bottom:4px;display:flex;justify-content:space-between;font-size:11px"><span>'+boletim[i].jogo+'<br><small style="color:#8a8fb5">'+boletim[i].mercado+'</small></span><b>'+boletim[i].odd+'</b></div>';}var bi=document.getElementById('betItens');if(bi)bi.innerHTML=html;var tot=1;for(var i=0;i<boletim.length;i++)tot*=boletim[i].odd;var ot=document.getElementById('oddTotal');if(ot)ot.innerText=tot.toFixed(2)+'x';var v=parseFloat((document.getElementById('valorAposta')||{}).value||0);var re=document.getElementById('retorno');if(re)re
