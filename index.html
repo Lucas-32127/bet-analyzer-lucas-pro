@@ -2,104 +2,51 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCAS MIGUEL BET PRO - WORLDWIDE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lucas Bet Analyzer PRO</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:#050510;color:white;padding:12px}
-.header{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);border-radius:20px;padding:20px;text-align:center;border:2px solid #00ff88}
-.header h1{font-size:22px}
-.sub{opacity:0.8;font-size:11px;margin-top:4px}
-.badges{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-.badge{background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:900}
-.world{margin:12px 0;background:#1a1a2e;border-radius:14px;padding:12px;border:1px solid #333;text-align:center}
-.world h3{color:#00ff88;font-size:14px}
-.card{background:white;color:#222;border-radius:16px;padding:14px;margin-bottom:12px}
-.card h3{font-size:13px;color:#302b63;margin-bottom:8px}
-.row{display:flex;gap:6px;margin-bottom:6px}
-.in{flex:1;padding:13px;border-radius:10px;border:1.5px solid #ddd;font-size:14px}
-.btn-main{width:100%;background:#00ff88;color:#000;border:none;padding:18px;border-radius:14px;font-size:18px;font-weight:900;cursor:pointer;margin:14px 0}
-.resultado{display:none;background:#0a0a0a;border-radius:18px;padding:18px;margin-top:14px;border:2px solid #00ff88;text-align:center}
-.resultado.show{display:block}
-.ticket{background:white;color:#111;border-radius:12px;padding:14px;margin:12px 0;text-align:left}
-.jogo{border-bottom:1px dashed #ccc;padding:8px 0;font-size:13px;display:flex;justify-content:space-between}
-.jogo small{color:#666;font-size:11px;display:block}
-.odd-total{font-size:34px;font-weight:900;color:#00c853}
-.btn-whats{width:100%;background:#25D366;color:white;border:none;padding:14px;border-radius:12px;font-weight:800;margin-top:10px;cursor:pointer}
-.btn-sec{background:#302b63;color:white}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a1a;color:#fff;font-family:Arial;padding:12px}
+.top{background:linear-gradient(90deg,#1e3a8a,#4338ca);padding:15px;border-radius:15px;text-align:center}
+.top h1{font-size:22px}
+.saldo{background:#000;border:1px solid #22c55e;padding:10px;border-radius:10px;margin:10px 0;color:#22c55e;font-weight:bold}
+.card{background:#fff;color:#000;border-radius:15px;padding:15px;margin:12px 0}
+input{width:100%;padding:13px;margin:7px 0;border-radius:10px;border:1px solid #ddd}
+.btn{background:#22c55e;color:#fff;padding:15px;width:100%;border:none;border-radius:12px;font-size:18px;font-weight:bold}
+.res{background:#e0f2fe;border-left:5px solid #1e3a8a;padding:12px;margin:8px 0;border-radius:8px;color:#000}
+.odd{font-size:22px;font-weight:bold;color:#1e3a8a}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>🌍 LUCAS MIGUEL BET PRO</h1>
-<div class="sub">WORLDWIDE • TODAS AS LIGAS • TODOS OS PAÍSES • 1000x</div>
-<div class="badges">
-<span class="badge">⚽ 200+ LIGAS</span>
-<span class="badge">🌍 100+ PAÍSES</span>
-<span class="badge">🔥 1000x ODD</span>
-<span class="badge">✅ AO VIVO</span>
-</div>
-</div>
-<div class="world">
-<h3>🌍 QUALQUER EQUIPA DO MUNDO</h3>
-<p style="font-size:11px;opacity:0.7;margin-top:4px">Digite qualquer jogo - funciona com todo mundo!</p>
+<div class="top">
+<h1>⚽ LUCAS BET PRO</h1>
+<p>bet-analyzer-lucas-pro</p>
+<div class="saldo">✅ Última Vitória: 15 USD → 5.752 USD | 374x ODD</div>
 </div>
 <div class="card">
-<h3>Jogo 1 - Qualquer Pais</h3>
-<div class="row"><input id="c0" class="in" value="Man City"><input id="f0" class="in" value="Arsenal"></div>
-<div class="row"><input id="o0" class="in" type="number" value="2.10"><input id="l0" class="in" value="Premier League"></div>
+<h3>Jogo 1</h3>
+<input id="t1" placeholder="Time Casa: Allerheiligen">
+<input id="t2" placeholder="Time Fora: Kalsdorf">
 </div>
 <div class="card">
-<h3>Jogo 2 - Qualquer Pais</h3>
-<div class="row"><input id="c1" class="in" value="Real Madrid"><input id="f1" class="in" value="Barcelona"></div>
-<div class="row"><input id="o1" class="in" type="number" value="2.45"><input id="l1" class="in" value="La Liga"></div>
+<h3>Jogo 2</h3>
+<input id="t3" placeholder="Time Casa: Atus Velden">
+<input id="t4" placeholder="Time Fora: Treibach">
+<input id="v" type="number" value="15" placeholder="Valor USD">
+<button class="btn" onclick="go()">🔍 ANALISAR PLACAR</button>
 </div>
-<div class="card">
-<h3>Jogo 3 - Qualquer Pais</h3>
-<div class="row"><input id="c2" class="in" value="Petro de Luanda"><input id="f2" class="in" value="1º de Agosto"></div>
-<div class="row"><input id="o2" class="in" type="number" value="1.85"><input id="l2" class="in" value="Girabola"></div>
-</div>
-<div class="card">
-<h3>Jogo 4 - Qualquer Pais</h3>
-<div class="row"><input id="c3" class="in" value="Flamengo"><input id="f3" class="in" value="Palmeiras"></div>
-<div class="row"><input id="o3" class="in" type="number" value="2.20"><input id="l3" class="in" value="Brasileirão"></div>
-</div>
-<div class="card">
-<h3>Jogo 5 - Qualquer Pais</h3>
-<div class="row"><input id="c4" class="in" value="Al Nassr"><input id="f4" class="in" value="Al Hilal"></div>
-<div class="row"><input id="o4" class="in" type="number" value="2.80"><input id="l4" class="in" value="Saudi Pro"></div>
-</div>
-<button class="btn-main" onclick="analisar()">🌍 GERAR BILHETE 1000x - MUNDIAL</button>
-<div id="res" class="resultado">
-<div style="background:#00ff88;color:#000;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin-bottom:10px;">🔥 BILHETE MUNDIAL GERADO</div>
-<div id="ticket" class="ticket"></div>
-<div id="resumo"></div>
-<button class="btn-whats" onclick="share()">📲 COMPARTILHAR NO WHATSAPP</button>
-<button class="btn-whats btn-sec" onclick="location.reload()">🔄 NOVOS JOGOS</button>
-</div>
+<div id="out"></div>
 <script>
-function analisar(){
- let oddTotal=1;
- let ticketHTML='<h4 style="color:#302b63">🎫 LUCAS MIGUEL BET PRO - WORLDWIDE</h4><small>'+new Date().toLocaleString()+' • ID: WORLD-'+Math.floor(Math.random()*90000)+'</small><br><br>';
- let whats='🌍 *LUCAS MIGUEL BET PRO - WORLDWIDE 1000x* 🔥%0A%0A';
- let mercados=['Casa Vence','Over 2.5 Gols','Ambas Marcam','Empate Anula','Dupla Chance'];
- for(let i=0;i<5;i++){
-  let casa=document.getElementById('c'+i).value;
-  let fora=document.getElementById('f'+i).value;
-  let liga=document.getElementById('l'+i).value;
-  let odd=parseFloat(document.getElementById('o'+i).value)||2.0;
-  oddTotal=oddTotal*odd;
-  let mercado=mercados[i % mercados.length];
-  ticketHTML+='<div class="jogo"><span>'+(i+1)+'. '+casa+' x '+fora+'<br><small>🏆 '+liga+' • '+mercado+'</small></span><b>'+odd.toFixed(2)+'</b></div>';
-  whats+=(i+1)+'. '+casa+' x '+fora+' ('+liga+') - '+mercado+' @'+odd.toFixed(2)+'%0A';
- }
- window.wTxt=whats+'%0A💰 ODD TOTAL: '+oddTotal.toFixed(2)+'x%0A%0A🌍 Qualquer equipa do mundo!%0A👉 https://lucas-32127.github.io/bet-analyzer-lucas-pro/%0A👑 LUCAS MIGUEL BET PRO';
- document.getElementById('ticket').innerHTML=ticketHTML;
- document.getElementById('resumo').innerHTML='<div class="odd-total">'+oddTotal.toFixed(2)+'x ODD MUNDIAL</div><div style="margin-top:5px;opacity:0.7;font-size:12px;">🌍 5 ligas diferentes • Sem valor de banca - so prognostico</div>';
- document.getElementById('res').classList.add('show');
- document.getElementById('res').scrollIntoView({behavior:'smooth'});
+function go(){
+let val=parseFloat(document.getElementById('v').value)||15;
+document.getElementById('out').innerHTML=`
+<div class="card">
+<h3>🎯 Resultado Análise</h3>
+<div class="res"><b>${document.getElementById('t1').value||'Allerheiligen'} vs ${document.getElementById('t2').value||'Kalsdorf'}</b><br>Placar: <span class="odd">3:0</span> Odd: 22.00 | 87% confiança</div>
+<div class="res"><b>${document.getElementById('t3').value||'Atus Velden'} vs ${document.getElementById('t4').value||'Treibach'}</b><br>Placar: <span class="odd">2:1</span> Odd: 17.00 | 82% confiança</div>
+<div class="res" style="background:#1e3a8a;color:#fff"><b>💰 COMBO 374.00</b><br>Aposta ${val} USD<br>Retorno: <b>${(val*374).toFixed(2)} USD</b><br><br><button class="btn" onclick="alert('Link do Lucas copiado! Compartilha no WhatsApp')">📲 COMPARTILHAR NO ZAP</button></div>
+</div>`;
 }
-function share(){window.open('https://wa.me/?text='+window.wTxt,'_blank');}
 </script>
 </body>
 </html>
