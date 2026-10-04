@@ -1,118 +1,105 @@
 <!DOCTYPE html>
-<html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OneXpress Bet ZON PRO MAX COMPLETA</title>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUCAS MIGUEL BET PRO - WORLDWIDE</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#080a12;color:#fff;padding-bottom:95px}
-.top{background:#0f1220;border-bottom:1px solid #1e2240;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
-.logo{font-weight:900;font-size:20px}.logo b{color:#ff6a00}
-.pill{background:#181b2e;border:1px solid #2a2e5a;padding:6px 10px;border-radius:20px;font-size:11px}
-.btn{border:0;border-radius:10px;padding:9px 12px;font-weight:900;font-size:11px;cursor:pointer}
-.btn-o{background:#ff6a00;color:#fff}.btn-g{background:#00ff88;color:#000}.btn-d{background:#181b2e;color:#aaa;border:1px solid #2a2e5a}
-.banner{margin:10px;background:linear-gradient(110deg,#ff6a00,#ff3c00);border-radius:14px;padding:12px;display:flex;justify-content:space-between}
-.calBar{background:#0f1220;padding:10px;display:flex;gap:6px;overflow-x:auto;align-items:center;border-bottom:1px solid #1e2240}
-.calBar input{background:#181b2e;border:1px solid #2a2e5a;color:#fff;padding:8px 10px;border-radius:10px;font-size:11px}
-.calBar select{background:#181b2e;border:1px solid #2a2e5a;color:#fff;padding:8px;border-radius:10px;font-size:11px}
-.tools{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:8px 10px}
-.tool{background:#181b2e;border:1px solid #22264a;border-radius:12px;padding:10px 4px;text-align:center;cursor:pointer}
-.tool.active{border-color:#ff6a00;background:#22160f;transform:scale(1.05)}
-.tool b{font-size:10px;display:block}.tool small{font-size:8px;color:#7a7fa8}
-.match{background:#181b2e;border:1px solid #22264a;border-radius:12px;margin:0 10px 8px;padding:10px}
-.odds3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:6px}
-.odd{background:#0f1220;border:1px solid #2a2e5a;border-radius:10px;padding:9px;text-align:center;cursor:pointer}
-.odd.on{background:#ff6a00;color:#fff;border-color:#ff6a00}
-.bet{position:fixed;bottom:75px;left:8px;right:8px;background:#181b2e;border:2px solid #ff6a00;border-radius:14px;padding:10px;display:none;z-index:30;max-height:65vh;overflow:auto}
-.bet.show{display:block}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#0f1220;border-top:1px solid #1e2240;display:flex;justify-content:space-around;padding:6px 0;z-index:40}
-.bottom div{text-align:center;font-size:9px;color:#6a6fa0;flex:1;cursor:pointer}
-.modal{display:none;position:fixed;inset:0;background:rgba(5,6,15,.92);z-index:100;align-items:center;justify-content:center;padding:12px}
-.modal.show{display:flex}
-.sheet{background:#181b2e;border-radius:16px;width:100%;max-width:400px;max-height:90vh;overflow:auto;padding:16px;border:1px solid #2a2e5a}
-.sheet input,.sheet select{width:100%;background:#0f1220;border:1px solid #2a2e5a;color:#fff;padding:10px;border-radius:8px;margin:5px 0}
-.sheet button{width:100%;padding:12px;border-radius:10px;border:0;font-weight:900;margin-top:6px}
-</style></head><body>
-<div class="top"><div class="logo"><b>One</b>Xpress <b>Bet</b><div style="font-size:8px;color:#00d4ff;letter-spacing:2px">ZON PRO MAX AO</div></div><div style="display:flex;gap:5px;align-items:center"><div class="pill" id="pillBal" style="display:flex">💰 <b id="saldoTxt" style="color:#00ff88">1369268 Kz</b></div><button class="btn btn-o" id="btnL" onclick="openM('login')">ENTRAR</button><button class="btn btn-d" id="btnR" onclick="openM('reg')">REGISTAR</button></div></div>
-<div id="barFin" style="display:flex;padding:8px;background:#0f1220;gap:6px"><button class="btn btn-g" style="flex:1" onclick="openM('dep')">DEPOSITAR MCX</button><button class="btn btn-o" style="flex:1" onclick="openM('saq')">LEVANTAR</button><button class="btn btn-d" style="flex:1" onclick="openM('carteira')">CARTEIRA</button></div>
-<div class="banner"><div><h3 style="font-size:16px">100% BONUS<br>ATE 50.000 KZ</h3><small style="font-size:10px">MCX Express - Bonus na hora</small><br><button style="background:#fff;color:#ff6a00;border:0;padding:6px 12px;border-radius:20px;font-weight:900;margin-top:6px;font-size:11px" onclick="openM('dep')">DEPOSITAR</button></div><div style="text-align:center"><div style="font-size:36px">🚀</div><div style="background:#000;color:#00ff88;padding:3px 6px;border-radius:6px;font-size:9px;font-weight:900">AVIATOR 1000x</div></div></div>
-<div style="display:flex;gap:6px;padding:0 10px;overflow-x:auto"><button id="fLive" onclick="filterLive()" style="background:#fff;color:#000;border:0;padding:8px 12px;border-radius:20px;font-weight:800;font-size:11px">🔴 AO VIVO</button><button onclick="showTab('avi')" style="background:#181b2e;border:1px solid #2a2e5a;color:#8a8fb5;padding:8px 12px;border-radius:20px;font-size:11px">🚀 AVIATOR</button><button onclick="showTab('casino')" style="background:#181b2e;border:1px solid #2a2e5a;color:#8a8fb5;padding:8px 12px;border-radius:20px;font-size:11px">🎰 CASINO</button><button onclick="openM('builder')" style="background:#181b2e;border:1px solid #2a2e5a;color:#8a8fb5;padding:8px 12px;border-radius:20px;font-size:11px">🛠️ BUILDER</button></div>
-<div class="calBar"><input type="date" id="calDate" onchange="filterDate()"><select id="ligaSel" onchange="filterLiga()"><option value="">Todas Ligas</option><option>Girabola</option><option>Premier League</option><option>La Liga</option><option>Bundesliga</option><option>Serie A</option><option>Brasileirao</option><option>Champions</option></select><select id="horaSel" onchange="filterHora()"><option value="">Qualquer Hora</option><option value="hoje">Hoje</option><option value="amanha">Amanhã</option><option value="live">Ao Vivo</option></select><button onclick="resetF()" style="background:#222;color:#fff;border:0;padding:8px 10px;border-radius:8px;font-size:10px">LIMPAR</button></div>
-<div class="tools"><div class="tool" id="toolSuper" onclick="toggleTool('super')"><div style="font-size:18px">🔥</div><b>Super Odd</b><small>+30%</small></div><div class="tool" id="toolBoost" onclick="toggleTool('boost')"><div style="font-size:18px">⚡</div><b>Odd Boost</b><small id="boostTxt">Turbo OFF</small></div><div class="tool" id="toolSeguro" onclick="toggleTool('seguro')"><div style="font-size:18px">🛡️</div><b>Seguro</b><small id="seguroTxt">Cashback OFF</small></div><div class="tool" id="toolVip" onclick="toggleTool('vip')"><div style="font-size:18px">👑</div><b>VIP ZON</b><small id="vipTxt">5% back OFF</small></div></div>
-<div id="tabJogos"><div style="display:flex;justify-content:space-between;padding:10px 12px;font-size:11px;font-weight:800"><span id="titJogos">🔴 TODOS OS JOGOS</span><span style="color:#00ff88" id="countJogos">30 JOGOS</span></div><div id="listaJogos"></div><button onclick="loadMore()" style="width:92%;margin:10px 4%;background:#181b2e;border:1px dashed #2a2e5a;color:#8a8fb5;padding:10px;border-radius:10px">CARREGAR MAIS +20</button></div>
-<div id="tabAvi" style="display:none;padding:10px"><div style="background:#181b2e;border:1px solid #2a2e5a;border-radius:14px;padding:14px;text-align:center"><h3 style="color:#ff6a00">🚀 AVIATOR ZON PRO</h3><div id="aviNum" style="background:#080a12;border-radius:10px;padding:28px;margin:10px 0;font-size:34px;font-weight:900;color:#ff6a00">1.00x</div><input id="aviVal" type="number" value="500" style="width:100%;background:#0f1220;border:1px solid #2a2e5a;color:#fff;padding:10px;border-radius:8px"><button style="width:100%;background:#ff6a00;color:#fff;border:0;padding:12px;border-radius:8px;font-weight:900;margin-top:6px" onclick="aviGo()">APOSTAR</button><button id="aviCash" style="width:100%;background:#00ff88;color:#000;border:0;padding:12px;border-radius:8px;font-weight:900;margin-top:6px;display:none" onclick="aviCash()">CASHOUT</button><div id="aviHist" style="margin-top:8px;font-size:11px;color:#888"></div></div></div>
-<div id="tabCasino" style="display:none;padding:10px"><div style="background:#181b2e;border:1px solid #2a2e5a;border-radius:14px;padding:14px;text-align:center"><h3 style="color:#ff6a00">🎰 CASINO ZON PRO</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div style="background:#0f1220;padding:14px;border-radius:10px" onclick="casGo('Roleta')">🎡<br><b>Roleta</b></div><div style="background:#0f1220;padding:14px;border-radius:10px" onclick="casGo('Slots')">🎰<br><b>Slots</b></div><div style="background:#0f1220;padding:14px;border-radius:10px" onclick="casGo('Blackjack')">🃏<br><b>Blackjack</b></div><div style="background:#0f1220;padding:14px;border-radius:10px" onclick="casGo('Crash')">💥<br><b>Crash</b></div></div><div id="casRes" style="margin-top:10px;font-size:12px"></div></div></div>
-<div class="bet" id="slip"><div style="display:flex;justify-content:space-between;font-weight:900"><span>BOLETIM <span id="cBet">0</span></span><span style="color:#ff4444" onclick="clearBet()">X FECHAR</span></div><div id="betList" style="margin:8px 0"></div><div style="background:#0f1220;border-radius:8px;padding:8px"><div style="display:flex;justify-content:space-between;font-size:12px"><span>Odd total:</span><b id="oddT" style="color:#ff6a00">1.00x</b></div><div id="bonusInfo" style="font-size:10px;color:#00ff88;display:none">🔥 Super Odd +30% ativo!</div><div style="display:flex;justify-content:space-between"><span>Retorno:</span><b id="retT" style="color:#00ff88">0 Kz</b></div><div id="seguroInfo" style="font-size:10px;color:#7aa8ff;display:none">🛡️ Seguro: cashback 50% se perder</div><div id="vipInfo" style="font-size:10px;color:#ffcc00;display:none">👑 VIP: +5% extra no retorno</div></div><input id="valBet" type="number" value="1000" style="width:100%;background:#0f1220;border:1px solid #2a2e5a;color:#fff;padding:10px;border-radius:8px;margin:8px 0"><button style="width:100%;background:#ff6a00;color:#fff;border:0;padding:12px;border-radius:8px;font-weight:900" onclick="doBet()">FAZER APOSTA</button></div>
-<div class="bottom"><div onclick="showTab('jogos')">⚽<br>Jogos</div><div onclick="showTab('avi')">🚀<br>Aviator</div><div onclick="togSlip()">🎟️<br>Boletim <span id="cBot" style="background:#ff6a00;color:#fff;border-radius:10px;padding:1px 5px">0</span></div><div onclick="openM('carteira')">👛<br>Carteira</div><div onclick="openM('perfil')">👤<br>Perfil</div></div>
-<div id="mLogin" class="modal"><div class="sheet"><h3 style="text-align:center;color:#ff6a00">ENTRAR</h3><input id="lTel" placeholder="Telefone"><input id="lPass" type="password" placeholder="Senha"><button style="background:#ff6a00;color:#fff" onclick="doLogin()">ENTRAR</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
-<div id="mReg" class="modal"><div class="sheet"><h3 style="text-align:center;color:#ff6a00">REGISTAR +10.000 KZ</h3><input id="rNome" placeholder="Nome"><input id="rTel" placeholder="Telefone"><input id="rPass" type="password" placeholder="Senha"><button style="background:#ff6a00;color:#fff" onclick="doReg()">CRIAR CONTA</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
-<div id="mDep" class="modal"><div class="sheet"><h3 style="text-align:center;color:#00ff88">DEPOSITAR MCX</h3><input id="dVal" type="number" value="5000"><input id="dTel" placeholder="Telefone MCX"><div style="background:#0f1220;padding:8px;border-radius:8px;margin:6px 0;font-size:11px">Total com bonus 100%: <b id="dTot" style="color:#00ff88">10000 Kz</b></div><button style="background:#00ff88;color:#000" onclick="doDep()">DEPOSITAR</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
-<div id="mSaq" class="modal"><div class="sheet"><h3 style="text-align:center;color:#ff6a00">LEVANTAR</h3><div>Saldo: <b id="sSal">0 Kz</b></div><select id="sMet"><option>Multicaixa Express</option><option>BAI</option><option>BFA</option></select><input id="sVal" type="number" placeholder="Min 1000"><input id="sIban" placeholder="IBAN ou telefone"><button style="background:#ff6a00;color:#fff" onclick="doSaq()">LEVANTAR</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
-<div id="mCarteira" class="modal"><div class="sheet"><h3 style="text-align:center;color:#ff6a00">CARTEIRA</h3><div style="background:linear-gradient(135deg,#ff6a00,#ff3c00);border-radius:12px;padding:14px;color:#fff"><small>SALDO DEMO</small><div style="font-size:28px;font-weight:900" id="cSal">0 Kz</div></div><div id="tList" style="margin-top:10px"></div><button style="background:#222;color:#fff;margin-top:10px" onclick="closeM()">FECHAR</button></div></div>
-<div id="mPerfil" class="modal"><div class="sheet"><h3 style="text-align:center;color:#ff6a00">PERFIL</h3><div id="pBox"></div><button style="background:#222;color:#fff;margin-top:10px" onclick="closeM()">FECHAR</button><button style="background:#ff4444;color:#fff" onclick="logout()">SAIR</button></div></div>
-<div id="mBuilder" class="modal"><div class="sheet"><h3 style="text-align:center">BET BUILDER</h3><div style="background:#0f1220;padding:10px;border-radius:8px;margin:8px 0"><label style="font-size:11px"><input type="checkbox" checked> Petro vence</label><br><label style="font-size:11px"><input type="checkbox" checked> Mais 2.5 golos</label><br><label style="font-size:11px"><input type="checkbox"> Mais 8.5 cantos</label><br><div style="margin-top:8px">Odd: <b style="color:#ff6a00">4.85x</b></div></div><button style="background:#ff6a00;color:#fff" onclick="alert('Adicionado!');closeM()">ADICIONAR</button><button style="background:#222;color:#fff" onclick="closeM()">FECHAR</button></div></div>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#050510;color:white;padding:12px}
+.header{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);border-radius:20px;padding:20px;text-align:center;border:2px solid #00ff88}
+.header h1{font-size:22px}
+.sub{opacity:0.8;font-size:11px;margin-top:4px}
+.badges{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.badge{background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:900}
+.world{margin:12px 0;background:#1a1a2e;border-radius:14px;padding:12px;border:1px solid #333;text-align:center}
+.world h3{color:#00ff88;font-size:14px}
+.card{background:white;color:#222;border-radius:16px;padding:14px;margin-bottom:12px}
+.card h3{font-size:13px;color:#302b63;margin-bottom:8px}
+.row{display:flex;gap:6px;margin-bottom:6px}
+.in{flex:1;padding:13px;border-radius:10px;border:1.5px solid #ddd;font-size:14px}
+.btn-main{width:100%;background:#00ff88;color:#000;border:none;padding:18px;border-radius:14px;font-size:18px;font-weight:900;cursor:pointer;margin:14px 0}
+.resultado{display:none;background:#0a0a0a;border-radius:18px;padding:18px;margin-top:14px;border:2px solid #00ff88;text-align:center}
+.resultado.show{display:block}
+.ticket{background:white;color:#111;border-radius:12px;padding:14px;margin:12px 0;text-align:left}
+.jogo{border-bottom:1px dashed #ccc;padding:8px 0;font-size:13px;display:flex;justify-content:space-between}
+.jogo small{color:#666;font-size:11px;display:block}
+.odd-total{font-size:34px;font-weight:900;color:#00c853}
+.btn-whats{width:100%;background:#25D366;color:white;border:none;padding:14px;border-radius:12px;font-weight:800;margin-top:10px;cursor:pointer}
+.btn-sec{background:#302b63;color:white}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🌍 LUCAS MIGUEL BET PRO</h1>
+<div class="sub">WORLDWIDE • TODAS AS LIGAS • TODOS OS PAÍSES • 1000x</div>
+<div class="badges">
+<span class="badge">⚽ 200+ LIGAS</span>
+<span class="badge">🌍 100+ PAÍSES</span>
+<span class="badge">🔥 1000x ODD</span>
+<span class="badge">✅ AO VIVO</span>
+</div>
+</div>
+<div class="world">
+<h3>🌍 QUALQUER EQUIPA DO MUNDO</h3>
+<p style="font-size:11px;opacity:0.7;margin-top:4px">Digite qualquer jogo - funciona com todo mundo!</p>
+</div>
+<div class="card">
+<h3>Jogo 1 - Qualquer Pais</h3>
+<div class="row"><input id="c0" class="in" value="Man City"><input id="f0" class="in" value="Arsenal"></div>
+<div class="row"><input id="o0" class="in" type="number" value="2.10"><input id="l0" class="in" value="Premier League"></div>
+</div>
+<div class="card">
+<h3>Jogo 2 - Qualquer Pais</h3>
+<div class="row"><input id="c1" class="in" value="Real Madrid"><input id="f1" class="in" value="Barcelona"></div>
+<div class="row"><input id="o1" class="in" type="number" value="2.45"><input id="l1" class="in" value="La Liga"></div>
+</div>
+<div class="card">
+<h3>Jogo 3 - Qualquer Pais</h3>
+<div class="row"><input id="c2" class="in" value="Petro de Luanda"><input id="f2" class="in" value="1º de Agosto"></div>
+<div class="row"><input id="o2" class="in" type="number" value="1.85"><input id="l2" class="in" value="Girabola"></div>
+</div>
+<div class="card">
+<h3>Jogo 4 - Qualquer Pais</h3>
+<div class="row"><input id="c3" class="in" value="Flamengo"><input id="f3" class="in" value="Palmeiras"></div>
+<div class="row"><input id="o3" class="in" type="number" value="2.20"><input id="l3" class="in" value="Brasileirão"></div>
+</div>
+<div class="card">
+<h3>Jogo 5 - Qualquer Pais</h3>
+<div class="row"><input id="c4" class="in" value="Al Nassr"><input id="f4" class="in" value="Al Hilal"></div>
+<div class="row"><input id="o4" class="in" type="number" value="2.80"><input id="l4" class="in" value="Saudi Pro"></div>
+</div>
+<button class="btn-main" onclick="analisar()">🌍 GERAR BILHETE 1000x - MUNDIAL</button>
+<div id="res" class="resultado">
+<div style="background:#00ff88;color:#000;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin-bottom:10px;">🔥 BILHETE MUNDIAL GERADO</div>
+<div id="ticket" class="ticket"></div>
+<div id="resumo"></div>
+<button class="btn-whats" onclick="share()">📲 COMPARTILHAR NO WHATSAPP</button>
+<button class="btn-whats btn-sec" onclick="location.reload()">🔄 NOVOS JOGOS</button>
+</div>
 <script>
-var user=null, trans=[], boletim=[], tools={super:false,boost:false,seguro:false,vip:false};
-var allJogos=[
-{liga:'Girabola',a:'Petro Luanda',b:'1 Agosto',data:'2026-10-03',hora:'18:00',score:'2-1',live:true,o1:2.15,oX:3.4,o2:2.95},
-{liga:'Girabola',a:'Sagrada',b:'Interclube',data:'2026-10-03',hora:'19:00',score:'0-0',live:true,o1:1.95,oX:3.2,o2:3.6},
-{liga:'Girabola',a:'Wiliete',b:'Desportivo Huila',data:'2026-10-04',hora:'15:30',score:'vs',live:false,o1:2.05,oX:3.1,o2:3.3},
-{liga:'Girabola',a:'Kabuscorp',b:'Bravos Maquis',data:'2026-10-04',hora:'16:00',score:'vs',live:false,o1:2.25,oX:3.0,o2:3.1},
-{liga:'Girabola',a:'Academica Lobito',b:'Santa Rita',data:'2026-10-05',hora:'15:00',score:'vs',live:false,o1:1.85,oX:3.4,o2:4.0},
-{liga:'Premier League',a:'Man City',b:'Arsenal',data:'2026-10-03',hora:'20:00',score:'1-0',live:true,o1:1.85,oX:3.8,o2:4.2},
-{liga:'Premier League',a:'Liverpool',b:'Chelsea',data:'2026-10-03',hora:'20:30',score:'vs',live:false,o1:2.1,oX:3.5,o2:3.2},
-{liga:'Premier League',a:'Man United',b:'Tottenham',data:'2026-10-04',hora:'14:00',score:'vs',live:false,o1:2.3,oX:3.4,o2:2.9},
-{liga:'Premier League',a:'Newcastle',b:'Aston Villa',data:'2026-10-04',hora:'16:30',score:'vs',live:false,o1:1.9,oX:3.6,o2:3.8},
-{liga:'Premier League',a:'Brighton',b:'West Ham',data:'2026-10-05',hora:'13:00',score:'vs',live:false,o1:2.0,oX:3.3,o2:3.5},
-{liga:'La Liga',a:'Real Madrid',b:'Barcelona',data:'2026-10-03',hora:'21:00',score:'0-0',live:true,o1:2.45,oX:3.3,o2:2.85},
-{liga:'La Liga',a:'Atletico Madrid',b:'Sevilla',data:'2026-10-04',hora:'18:00',score:'vs',live:false,o1:1.75,oX:3.8,o2:4.5},
-{liga:'La Liga',a:'Villarreal',b:'Real Sociedad',data:'2026-10-04',hora:'20:00',score:'vs',live:false,o1:2.2,oX:3.2,o2:3.0},
-{liga:'La Liga',a:'Athletic Bilbao',b:'Valencia',data:'2026-10-05',hora:'17:00',score:'vs',live:false,o1:1.95,oX:3.3,o2:3.7},
-{liga:'Bundesliga',a:'Bayern Munich',b:'Dortmund',data:'2026-10-04',hora:'17:30',score:'vs',live:false,o1:1.65,oX:4.0,o2:5.0},
-{liga:'Bundesliga',a:'Leverkusen',b:'Leipzig',data:'2026-10-04',hora:'15:30',score:'vs',live:false,o1:2.15,oX:3.4,o2:3.1},
-{liga:'Bundesliga',a:'Stuttgart',b:'Frankfurt',data:'2026-10-05',hora:'15:30',score:'vs',live:false,o1:2.05,oX:3.5,o2:3.2},
-{liga:'Serie A',a:'Inter',b:'AC Milan',data:'2026-10-04',hora:'19:45',score:'vs',live:false,o1:2.25,oX:3.2,o2:3.0},
-{liga:'Serie A',a:'Napoli',b:'Juventus',data:'2026-10-05',hora:'19:45',score:'vs',live:false,o1:2.4,oX:3.1,o2:2.9},
-{liga:'Serie A',a:'Roma',b:'Lazio',data:'2026-10-05',hora:'17:00',score:'vs',live:false,o1:2.1,oX:3.2,o2:3.4},
-{liga:'Brasileirao',a:'Flamengo',b:'Palmeiras',data:'2026-10-03',hora:'23:00',score:'vs',live:false,o1:2.1,oX:3.1,o2:3.4},
-{liga:'Brasileirao',a:'Corinthians',b:'Sao Paulo',data:'2026-10-04',hora:'21:00',score:'vs',live:false,o1:2.3,oX:3.0,o2:3.0},
-{liga:'Brasileirao',a:'Botafogo',b:'Fluminense',data:'2026-10-04',hora:'19:00',score:'vs',live:false,o1:1.9,oX:3.3,o2:3.8},
-{liga:'Brasileirao',a:'Gremio',b:'Internacional',data:'2026-10-05',hora:'16:00',score:'vs',live:false,o1:2.0,oX:3.2,o2:3.6},
-{liga:'Champions',a:'Man City',b:'Real Madrid',data:'2026-10-07',hora:'20:00',score:'vs',live:false,o1:2.2,oX:3.4,o2:3.0},
-{liga:'Champions',a:'Barcelona',b:'Bayern',data:'2026-10-07',hora:'20:00',score:'vs',live:false,o1:2.6,oX:3.5,o2:2.5},
-{liga:'Champions',a:'PSG',b:'Arsenal',data:'2026-10-08',hora:'20:00',score:'vs',live:false,o1:2.0,oX:3.6,o2:3.4},
-{liga:'Champions',a:'Inter',b:'Liverpool',data:'2026-10-08',hora:'20:00',score:'vs',live:false,o1:2.8,oX:3.3,o2:2.4}
-];
-var filtered=allJogos.slice(0,15); var showCount=15;
-function load(){try{user=JSON.parse(localStorage.getItem('zp_user')||'null');}catch(e){} try{trans=JSON.parse(localStorage.getItem('zp_trans')||'[]');}catch(e){} try{var t=JSON.parse(localStorage.getItem('zp_tools')||'null'); if(t) tools=t;}catch(e){}}
-function save(){localStorage.setItem('zp_user',JSON.stringify(user)); localStorage.setItem('zp_trans',JSON.stringify(trans)); localStorage.setItem('zp_tools',JSON.stringify(tools));}
-function upd(){if(!user) return; var s=user.saldo||0; ['saldoTxt','cSal','sSal'].forEach(function(id){var el=document.getElementById(id); if(el) el.innerText=s.toLocaleString()+' Kz';}); document.getElementById('pillBal').style.display='flex'; document.getElementById('barFin').style.display='flex'; var bl=document.getElementById('btnL'); if(bl) bl.style.display='none'; var br=document.getElementById('btnR'); if(br) br.style.display='none'; updateToolsUI();}
-function updateToolsUI(){document.getElementById('toolSuper').className='tool'+(tools.super?' active':''); document.getElementById('toolBoost').className='tool'+(tools.boost?' active':''); document.getElementById('toolSeguro').className='tool'+(tools.seguro?' active':''); document.getElementById('toolVip').className='tool'+(tools.vip?' active':''); document.getElementById('boostTxt').innerText=tools.boost?'Turbo ON':'Turbo OFF'; document.getElementById('seguroTxt').innerText=tools.seguro?'Cashback ON':'Cashback OFF'; document.getElementById('vipTxt').innerText=tools.vip?'5% back ON':'5% back OFF';}
-function init(){load(); if(user) upd(); var today=new Date().toISOString().slice(0,10); var cd=document.getElementById('calDate'); if(cd) cd.value=today; renderJogos(); renderT(); var dv=document.getElementById('dVal'); if(dv) dv.addEventListener('input',function(){var v=parseFloat(dv.value||0); document.getElementById('dTot').innerText=(v*2).toLocaleString()+' Kz';}); var vb=document.getElementById('valBet'); if(vb) vb.addEventListener('input',renderSlip); updateToolsUI();}
-function renderJogos(){var el=document.getElementById('listaJogos'); var h=''; for(var i=0;i<Math.min(filtered.length,showCount);i++){var j=filtered[i]; var d=new Date(j.data); var dStr=d.toLocaleDateString('pt-AO',{day:'2-digit',month:'2-digit'}); h+='<div class="match"><div style="display:flex;justify-content:space-between;font-size:10px;color:#8a8fb5"><span>'+j.liga+' - '+dStr+' '+j.hora+'</span><span style="color:'+(j.live?'#00ff88':'#6a6fa0')+'">'+j.score+'</span></div><div style="display:flex;justify-content:space-between;font-weight:800;margin-top:4px;font-size:13px"><span>'+j.a+'</span><span>'+j.b+'</span></div><div class="odds3"><div class="odd" onclick="sel(this,\''+j.a+' vs '+j.b+'\',\''+j.a+' vence\','+j.o1+')"><small>1</small><br><b>'+j.o1+'</b></div><div class="odd" onclick="sel(this,\''+j.a+' vs '+j.b+'\',\'Empate\','+j.oX+')"><small>X</small><br><b>'+j.oX+'</b></div><div class="odd" onclick="sel(this,\''+j.a+' vs '+j.b+'\',\''+j.b+' vence\','+j.o2+')"><small>2</small><br><b>'+j.o2+'</b></div></div></div>';} el.innerHTML=h||'<div style="text-align:center;padding:20px;color:#666">Nenhum jogo nessa data</div>'; document.getElementById('countJogos').innerText=filtered.length+' JOGOS'; document.getElementById('titJogos').innerText='🔴 JOGOS - '+filtered.length+' encontrados';}
-function filterDate(){var d=document.getElementById('calDate').value; if(!d){filtered=allJogos.slice(0,showCount); renderJogos(); return;} filtered=allJogos.filter(function(j){return j.data==d;}); showCount=20; renderJogos();}
-function filterLiga(){var l=document.getElementById('ligaSel').value; if(!l){filtered=allJogos.slice();} else {filtered=allJogos.filter(function(j){return j.liga==l;});} showCount=20; renderJogos();}
-function filterHora(){var h=document.getElementById('horaSel').value; if(h=='hoje'){var today=new Date().toISOString().slice(0,10); filtered=allJogos.filter(function(j){return j.data==today;});} else if(h=='amanha'){var tm=new Date(); tm.setDate(tm.getDate()+1); var ts=tm.toISOString().slice(0,10); filtered=allJogos.filter(function(j){return j.data==ts;});} else if(h=='live'){filtered=allJogos.filter(function(j){return j.live;});} else {filtered=allJogos.slice();} showCount=20; renderJogos();}
-function filterLive(){filtered=allJogos.filter(function(j){return j.live;}); showCount=20; renderJogos();}
-function resetF(){document.getElementById('calDate').value=''; document.getElementById('ligaSel').value=''; document.getElementById('horaSel').value=''; filtered=allJogos.slice(); showCount=15; renderJogos();}
-function loadMore(){showCount+=20; renderJogos();}
-function toggleTool(t){tools[t]=!tools[t]; save(); updateToolsUI(); if(t=='super'){alert(tools.super?'🔥 Super Odd ATIVADO! +30% nas odds!':'🔥 Super Odd DESATIVADO');} if(t=='boost'){alert(tools.boost?'⚡ Odd Boost TURBO ATIVADO!':'⚡ Odd Boost DESATIVADO');} if(t=='seguro'){alert(tools.seguro?'🛡️ Seguro ATIVADO! 50% de volta se perder!':'🛡️ Seguro DESATIVADO');} if(t=='vip'){alert(tools.vip?'👑 VIP ZON ATIVADO! +5% extra!':'👑 VIP DESATIVADO');} renderSlip();}
-function showTab(t){document.getElementById('tabJogos').style.display=t=='jogos'?'block':'none'; document.getElementById('tabAvi').style.display=t=='avi'?'block':'none'; document.getElementById('tabCasino').style.display=t=='casino'?'block':'none';}
-function openM(t){closeM(); var m=document.getElementById('m'+t.charAt(0).toUpperCase()+t.slice(1)); if(m) m.classList.add('show'); if(t=='carteira'){upd(); renderT();} if(t=='perfil'){var b=document.getElementById('pBox'); b.innerHTML=user?'<div style="background:#0f1220;padding:10px;border-radius:8px"><b>'+user.nome+'</b><br><small>'+user.tel+'</small><br>Saldo: '+(user.saldo||0).toLocaleString()+' Kz</div>':'Faz login';}}
-function closeM(){document.querySelectorAll('.modal').forEach(function(m){m.classList.remove('show');});}
-function doReg(){var n=document.getElementById('rNome').value, t=document.getElementById('rTel').value, p=document.getElementById('rPass').value; if(!n||!t||!p){alert('Preencha');return;} user={nome:n,tel:t,pass:p,saldo:10000}; trans=[]; save(); alert('Conta criada! +10.000 Kz!'); closeM(); location.reload();}
-function doLogin(){var t=document.getElementById('lTel').value, p=document.getElementById('lPass').value; var u=null; try{u=JSON.parse(localStorage.getItem('zp_user')||'null');}catch(e){} if(u&&u.tel==t&&u.pass==p){user=u; closeM(); location.reload();} else alert('Dados errados');}
-function logout(){localStorage.removeItem('zp_user'); location.reload();}
-function sel(el,jogo,merc,odd){if(!user){openM('reg'); return;} var realOdd=odd; if(tools.super) realOdd=realOdd*1.3; if(tools.boost) realOdd=realOdd*1.15; el.classList.toggle('on'); var idx=-1; for(var i=0;i<boletim.length;i++) if(boletim[i].jogo==jogo) idx=i; if(idx>=0) boletim.splice(idx,1); if(el.classList.contains('on')) boletim.push({jogo:jogo,merc:merc,odd:realOdd,base:odd}); renderSlip();}
-function renderSlip(){var slip=document.getElementById('slip'); if(boletim.length==0){slip.classList.remove('show'); document.getElementById('cBot').innerText='0'; document.getElementById('cBet').innerText='0'; return;} slip.classList.add('show'); document.getElementById('cBet').innerText=boletim.length; document.getElementById('cBot').innerText=boletim.length; var h=''; for(var i=0;i<boletim.length;i++) h+='<div style="background:#0f1220;padding:6px;border-radius:6px;margin-bottom:4px;display:flex;justify-content:space-between;font-size:11px"><span>'+boletim[i].jogo+'<br><small style="color:#888">'+boletim[i].merc+'</small></span><b>'+boletim[i].odd.toFixed(2)+'</b></div>'; document.getElementById('betList').innerHTML=h; var tot=1; for(var i=0;i<boletim.length;i++) tot*=boletim[i].odd; document.getElementById('oddT').innerText=tot.toFixed(2)+'x'; document.getElementById('bonusInfo').style.display=tools.super||tools.boost?'block':'none'; document.getElementById('seguroInfo').style.display=tools.seguro?'block':'none'; document.getElementById('vipInfo').style.display=tools.vip?'block':'none'; var v=parseFloat(document.getElementById('valBet').value||0); var ret=v*tot; if(tools.vip) ret=ret*1.05; document.getElementById('retT').innerText=ret.toLocaleString()+' Kz';}
-function clearBet(){boletim=[]; document.querySelectorAll('.odd.on').forEach(function(e){e.classList.remove('on');}); renderSlip();}
-function togSlip(){document.getElementById('slip').classList.toggle('show');}
-function doBet(){if(!user){openM('reg'); return;} var v=parseFloat(document.getElementById('valBet').value||0); if(v<100){alert('Min 100 Kz'); return;} if(v>user.saldo){alert('Saldo insuficiente'); openM('dep'); return;} var tot=1; for(var i=0;i<boletim.length;i++) tot*=boletim[i].odd; var ret=v*tot; if(tools.vip) ret=ret*1.05; user.saldo-=v; trans.unshift({tipo:'aposta',valor:-v,met:'Aposta ZON PRO',data:new Date().toLocaleString()}); save(); upd(); renderT(); alert('APOSTA FEITA! Odd '+tot.toFixed(2)+'x Retorno '+ret.toLocaleString()+' Kz'); clearBet();}
-function doDep(){var v=parseFloat(document.getElementById('dVal').value||0), t=document.getElementById('dTel').value; if(v<500){alert('Min 500'); return;} if(!t){alert('Telefone'); return;} if(!user){alert('Regista'); openM('reg'); return;} setTimeout(function(){var bonus=v; user.saldo=(user.saldo||0)+v+bonus; trans.unshift({tipo:'dep',valor:v+bonus,met:'MCX '+t,data:new Date().toLocaleString()}); save(); upd(); renderT(); closeM(); alert('DEPOSITO +'+(v+bonus).toLocaleString()+' Kz');},800);}
-function doSaq(){var v=parseFloat(document.getElementById('sVal').value||0), ib=document.getElementById('sIban').value; if(v<1000){alert('Min 1000'); return;} if(!user||v>user.saldo){alert('Saldo insuficiente'); return;} if(!ib){alert('IBAN'); return;} user.saldo-=v; trans.unshift({tipo:'saq',valor:-v,met:document.getElementById('sMet').value+' '+ib,data:new Date().toLocaleString()}); save(); upd(); renderT(); closeM(); alert('LEVANTAMENTO '+(v*0.98).toLocaleString()+' Kz');}
-function renderT(){var el=document.getElementById('tList'); if(!el) return; if(trans.length==0){el.innerHTML='<div style="text-align:center;color:#555;font-size:11px;padding:12px">Sem transacoes</div>'; return;} var h=''; for(var i=0;i<Math.min(trans.length,15);i++){var t=trans[i]; h+='<div style="background:#0f1220;border:1px solid #22264a;border-radius:8px;padding:8px;display:flex;justify-content:space-between;margin-bottom:5px;font-size:11px"><div><b>'+(t.tipo=='dep'?'DEPOSITO':t.tipo=='saq'?'LEVANTAMENTO':'APOSTA')+'</b><br><small>'+t.data+'</small></div><div style="color:'+(t.valor>0?'#00ff88':'#fff')+'"><b>'+t.valor.toLocaleString()+' Kz</b></div></div>';} el.innerHTML=h;}
-var aviInt=null, aviM=1, aviOn=false, aviVal=0;
-function aviGo(){if(!user){openM('reg'); return;} var v=parseFloat(document.getElementById('aviVal').value||0); if(v<100){alert('Min 100'); return;} if(v>user.saldo){alert('Saldo insuficiente'); openM('dep'); return;} aviVal=v; user.saldo-=v; save(); upd(); aviOn=true; aviM=1; document.getElementById('aviCash').style.display='block'; document.getElementById('aviNum').innerText='1.00x'; if(aviInt) clearInterval(aviInt); aviInt=setInterval(function(){aviM+=0.05+Math.random()*0.12; document.getElementById('aviNum').innerText=aviM.toFixed(2)+'x'; if(Math.random()<0.018){clearInterval(aviInt); document.getElementById('aviNum').innerText='CRASH '+aviM.toFixed(2)+'x'; document.getElementById('aviCash').style.display='none'; var ah=document.getElementById('aviHist'); if(ah) ah.innerHTML='Perdeu '+aviVal+' Kz - '+aviM.toFixed(2)+'x<br>'+ah.innerHTML; aviOn=false;}},180);}
-function aviCash(){if(!aviOn) return; clearInterval(aviInt); var ganho=aviVal*aviM; if(tools.vip) ganho=ganho*1.05; user.saldo+=ganho; trans.unshift({tipo:'dep',valor:ganho,met:'Aviator '+aviM.toFixed(2)+'x',data:new Date().toLocaleString()}); save(); upd(); renderT(); document.getElementById('aviCash').style.display='none'; var ah=document.getElementById('aviHist'); if(ah) ah.innerHTML='Ganhou '+ganho.toLocaleString()+' Kz - '+aviM.toFixed(2)+'x<br>'+ah.innerHTML; aviOn=false; alert('Cashout! '+ganho.toLocaleString()+' Kz');}
-function casGo(jogo){if(!user){openM('reg'); return;} var v=prompt('Valor para '+jogo+' min 100','500'); if(!v) return; v=parseFloat(v); if(v>user.saldo){alert('Saldo insuficiente'); return;} user.saldo-=v; var win=Math.random()>0.48; var mult=win?(1+Math.random()*2.5):0; var ganho=v*mult; if(win) user.saldo+=ganho; trans.unshift({tipo:win?'dep':'aposta',valor:win?ganho:-v,met:'Casino '+jogo,data:new Date().toLocaleString()}); save(); upd(); renderT(); var cr=document.getElementById('casRes'); if(cr) cr.innerHTML=(win?'✅ Ganhou ':'❌ Perdeu ')+(win?ganho.toLocaleString()+' Kz':'')+' em '+jogo+'<br>'+cr.innerHTML;}
-init();
+function analisar(){
+ let oddTotal=1;
+ let ticketHTML='<h4 style="color:#302b63">🎫 LUCAS MIGUEL BET PRO - WORLDWIDE</h4><small>'+new Date().toLocaleString()+' • ID: WORLD-'+Math.floor(Math.random()*90000)+'</small><br><br>';
+ let whats='🌍 *LUCAS MIGUEL BET PRO - WORLDWIDE 1000x* 🔥%0A%0A';
+ let mercados=['Casa Vence','Over 2.5 Gols','Ambas Marcam','Empate Anula','Dupla Chance'];
+ for(let i=0;i<5;i++){
+  let casa=document.getElementById('c'+i).value;
+  let fora=document.getElementById('f'+i).value;
+  let liga=document.getElementById('l'+i).value;
+  let odd=parseFloat(document.getElementById('o'+i).value)||2.0;
+  oddTotal=oddTotal*odd;
+  let mercado=mercados[i % mercados.length];
+  ticketHTML+='<div class="jogo"><span>'+(i+1)+'. '+casa+' x '+fora+'<br><small>🏆 '+liga+' • '+mercado+'</small></span><b>'+odd.toFixed(2)+'</b></div>';
+  whats+=(i+1)+'. '+casa+' x '+fora+' ('+liga+') - '+mercado+' @'+odd.toFixed(2)+'%0A';
+ }
+ window.wTxt=whats+'%0A💰 ODD TOTAL: '+oddTotal.toFixed(2)+'x%0A%0A🌍 Qualquer equipa do mundo!%0A👉 https://lucas-32127.github.io/bet-analyzer-lucas-pro/%0A👑 LUCAS MIGUEL BET PRO';
+ document.getElementById('ticket').innerHTML=ticketHTML;
+ document.getElementById('resumo').innerHTML='<div class="odd-total">'+oddTotal.toFixed(2)+'x ODD MUNDIAL</div><div style="margin-top:5px;opacity:0.7;font-size:12px;">🌍 5 ligas diferentes • Sem valor de banca - so prognostico</div>';
+ document.getElementById('res').classList.add('show');
+ document.getElementById('res').scrollIntoView({behavior:'smooth'});
+}
+function share(){window.open('https://wa.me/?text='+window.wTxt,'_blank');}
 </script>
-</body></html>
+</body>
+</html>
